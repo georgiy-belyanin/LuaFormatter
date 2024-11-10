@@ -7,7 +7,7 @@
 using namespace antlr4;
 
 // varOrExp nameAndArgs+;
-antlrcpp::Any FormatVisitor::visitFunctioncall(LuaParser::FunctioncallContext* ctx) {
+std::any FormatVisitor::visitFunctioncall(LuaParser::FunctioncallContext* ctx) {
     LOG_FUNCTION_BEGIN();
     chainedMethodCallHasIncIndent_.push_back(false);
     chainedMethodCallIsFirst_.push_back(false);

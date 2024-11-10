@@ -24,7 +24,7 @@ static std::string __format(ANTLRInputStream& input, const Config& config) {
     }
 
     FormatVisitor visitor(tokenVector, config);
-    return chunk->accept(&visitor).as<std::string>();
+    return std::any_cast<std::string>(chunk->accept(&visitor));
 }
 
 static const std::string DISABLE_FORMAT_BEGIN = "-- LuaFormatter off";

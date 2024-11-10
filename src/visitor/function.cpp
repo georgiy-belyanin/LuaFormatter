@@ -8,7 +8,7 @@ using namespace antlr4;
 
 
 // FUNCTION funcname funcbody;
-antlrcpp::Any FormatVisitor::visitFuncStat(LuaParser::FuncStatContext* ctx) {
+std::any FormatVisitor::visitFuncStat(LuaParser::FuncStatContext* ctx) {
     LOG_FUNCTION_BEGIN();
     cur_writer() << ctx->FUNCTION()->getText();
     cur_writer() << commentAfter(ctx->FUNCTION(), " ");
@@ -20,7 +20,7 @@ antlrcpp::Any FormatVisitor::visitFuncStat(LuaParser::FuncStatContext* ctx) {
 }
 
 // LOCAL FUNCTION NAME funcbody;
-antlrcpp::Any FormatVisitor::visitLocalFuncStat(LuaParser::LocalFuncStatContext* ctx) {
+std::any FormatVisitor::visitLocalFuncStat(LuaParser::LocalFuncStatContext* ctx) {
     LOG_FUNCTION_BEGIN();
     cur_writer() << ctx->LOCAL()->getText();
     cur_writer() << commentAfter(ctx->LOCAL(), " ");
@@ -34,7 +34,7 @@ antlrcpp::Any FormatVisitor::visitLocalFuncStat(LuaParser::LocalFuncStatContext*
 }
 
 // FUNCTION funcbody;
-antlrcpp::Any FormatVisitor::visitFunctiondef(LuaParser::FunctiondefContext* ctx) {
+std::any FormatVisitor::visitFunctiondef(LuaParser::FunctiondefContext* ctx) {
     LOG_FUNCTION_BEGIN();
     cur_writer() << ctx->FUNCTION()->getText();
     cur_writer() << commentAfter(ctx->FUNCTION(), "");
@@ -48,7 +48,7 @@ antlrcpp::Any FormatVisitor::visitFunctiondef(LuaParser::FunctiondefContext* ctx
 }
 
 // LP parlist? RP block END
-antlrcpp::Any FormatVisitor::visitFuncbody(LuaParser::FuncbodyContext* ctx) {
+std::any FormatVisitor::visitFuncbody(LuaParser::FuncbodyContext* ctx) {
     LOG_FUNCTION_BEGIN();
     cur_writer() << ctx->LP()->getText();
     if (ctx->parlist() != nullptr) {
@@ -112,7 +112,7 @@ antlrcpp::Any FormatVisitor::visitFuncbody(LuaParser::FuncbodyContext* ctx) {
 }
 
 // namelist (COMMA ELLIPSIS)? | ELLIPSIS
-antlrcpp::Any FormatVisitor::visitParlist(LuaParser::ParlistContext* ctx) {
+std::any FormatVisitor::visitParlist(LuaParser::ParlistContext* ctx) {
     LOG_FUNCTION_BEGIN();
     if (ctx->namelist() != nullptr) {
         visitNamelist(ctx->namelist());

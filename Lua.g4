@@ -112,8 +112,15 @@ exp:
 	| prefixexp
 	| functiondef
 	| tableconstructor
+	| <assoc=right> exp operatorPower exp
 	| unaryOperator exp
-	| exp linkOperator exp;
+	| exp operatorMulDivMod exp
+	| exp operatorAddSub exp
+	| <assoc=right> exp operatorStrcat exp
+	| exp operatorComparison exp
+	| exp operatorAnd exp
+	| exp operatorOr exp
+	| exp operatorBitwise exp;
 
 prefixexp: varOrExp nameAndArgs*;
 
@@ -141,28 +148,32 @@ field: LSB exp RSB EQL exp | NAME EQL exp | exp;
 
 fieldsep: COMMA | SEMI;
 
-linkOperator:
-	'and'
-	| 'or'
-	| '..'
-	| '<'
-	| '>'
-	| '<='
-	| '>='
-	| '~='
-	| '=='
-	| '+'
-	| '-'
-	| '*'
-	| '/'
-	| '%'
-	| '//'
-	| '&'
-	| '|'
-	| '~'
-	| '<<'
-	| '>>'
-	| '^';
+operatorOr
+	: 'or';
+
+operatorAnd
+	: 'and';
+
+operatorComparison
+	: '<' | '>' | '<=' | '>=' | '~=' | '==';
+
+operatorStrcat
+	: '..';
+
+operatorAddSub
+	: '+' | '-';
+
+operatorMulDivMod
+	: '*' | '/' | '%' | '//';
+
+operatorBitwise
+	: '&' | '|' | '~' | '<<' | '>>';
+
+operatorUnary
+    : 'not' | '#' | '-' | '~';
+
+operatorPower
+    : '^';
 
 unaryOperator: 'not' | '#' | '-' | '~';
 

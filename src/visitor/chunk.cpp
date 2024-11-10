@@ -6,7 +6,7 @@
 
 using namespace antlr4;
 
-antlrcpp::Any FormatVisitor::visitChunk(LuaParser::ChunkContext* ctx) {
+std::any FormatVisitor::visitChunk(LuaParser::ChunkContext* ctx) {
     LOG_FUNCTION_BEGIN();
     pushWriter();
     cur_writer() << commentAfter(nullptr, "");

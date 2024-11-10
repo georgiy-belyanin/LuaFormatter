@@ -7,7 +7,7 @@
 using namespace antlr4;
 
 // stat* retstat?
-antlrcpp::Any FormatVisitor::visitBlock(LuaParser::BlockContext* ctx) {
+std::any FormatVisitor::visitBlock(LuaParser::BlockContext* ctx) {
     LOG_FUNCTION_BEGIN();
     auto stats = ctx->stat();
     int n = stats.size();

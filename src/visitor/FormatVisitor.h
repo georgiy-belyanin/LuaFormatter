@@ -15,49 +15,49 @@ class FormatVisitor : public LuaBaseVisitor {
    public:
     FormatVisitor(const std::vector<Token*>& tokens, const Config& config) : tokens_(tokens), config_(config) {}
 
-    antlrcpp::Any visitChunk(LuaParser::ChunkContext* context) override;
-    antlrcpp::Any visitBlock(LuaParser::BlockContext* context) override;
-    antlrcpp::Any visitStat(LuaParser::StatContext* context) override;
-    antlrcpp::Any visitFunctioncall(LuaParser::FunctioncallContext* context) override;
-    antlrcpp::Any visitVarDecl(LuaParser::VarDeclContext* context) override;
-    antlrcpp::Any visitGotoStat(LuaParser::GotoStatContext* context) override;
-    antlrcpp::Any visitDoStat(LuaParser::DoStatContext* context) override;
-    antlrcpp::Any visitWhileStat(LuaParser::WhileStatContext* context) override;
-    antlrcpp::Any visitRepeatStat(LuaParser::RepeatStatContext* context) override;
-    antlrcpp::Any visitIfStat(LuaParser::IfStatContext* context) override;
-    antlrcpp::Any visitForStat(LuaParser::ForStatContext* context) override;
-    antlrcpp::Any visitForInStat(LuaParser::ForInStatContext* context) override;
-    antlrcpp::Any visitFuncStat(LuaParser::FuncStatContext* context) override;
-    antlrcpp::Any visitLocalFuncStat(LuaParser::LocalFuncStatContext* context) override;
-    antlrcpp::Any visitLocalVarDecl(LuaParser::LocalVarDeclContext* context) override;
+    std::any visitChunk(LuaParser::ChunkContext* context) override;
+    std::any visitBlock(LuaParser::BlockContext* context) override;
+    std::any visitStat(LuaParser::StatContext* context) override;
+    std::any visitFunctioncall(LuaParser::FunctioncallContext* context) override;
+    std::any visitVarDecl(LuaParser::VarDeclContext* context) override;
+    std::any visitGotoStat(LuaParser::GotoStatContext* context) override;
+    std::any visitDoStat(LuaParser::DoStatContext* context) override;
+    std::any visitWhileStat(LuaParser::WhileStatContext* context) override;
+    std::any visitRepeatStat(LuaParser::RepeatStatContext* context) override;
+    std::any visitIfStat(LuaParser::IfStatContext* context) override;
+    std::any visitForStat(LuaParser::ForStatContext* context) override;
+    std::any visitForInStat(LuaParser::ForInStatContext* context) override;
+    std::any visitFuncStat(LuaParser::FuncStatContext* context) override;
+    std::any visitLocalFuncStat(LuaParser::LocalFuncStatContext* context) override;
+    std::any visitLocalVarDecl(LuaParser::LocalVarDeclContext* context) override;
 
-    antlrcpp::Any visitRetstat(LuaParser::RetstatContext* context) override;
-    antlrcpp::Any visitVarlist(LuaParser::VarlistContext* context) override;
-    antlrcpp::Any visitNamelist(LuaParser::NamelistContext* context) override;
-    antlrcpp::Any visitAttnamelist(LuaParser::AttnamelistContext* context) override;
-    antlrcpp::Any visitNameattrib(LuaParser::NameattribContext* context) override;
-    antlrcpp::Any visitExplist(LuaParser::ExplistContext* context) override;
+    std::any visitRetstat(LuaParser::RetstatContext* context) override;
+    std::any visitVarlist(LuaParser::VarlistContext* context) override;
+    std::any visitNamelist(LuaParser::NamelistContext* context) override;
+    std::any visitAttnamelist(LuaParser::AttnamelistContext* context) override;
+    std::any visitNameattrib(LuaParser::NameattribContext* context) override;
+    std::any visitExplist(LuaParser::ExplistContext* context) override;
 
-    antlrcpp::Any visitExp(LuaParser::ExpContext* context) override;
-    antlrcpp::Any visitString(LuaParser::StringContext* ctx) override;
-    antlrcpp::Any visitPrefixexp(LuaParser::PrefixexpContext* context) override;
-    antlrcpp::Any visitVarOrExp(LuaParser::VarOrExpContext* context) override;
-    antlrcpp::Any visitVar(LuaParser::VarContext* context) override;
-    antlrcpp::Any visitVarSuffix(LuaParser::VarSuffixContext* context) override;
-    antlrcpp::Any visitNameAndArgs(LuaParser::NameAndArgsContext* context) override;
-    antlrcpp::Any visitArgs(LuaParser::ArgsContext* context) override;
+    std::any visitExp(LuaParser::ExpContext* context) override;
+    std::any visitString(LuaParser::StringContext* ctx) override;
+    std::any visitPrefixexp(LuaParser::PrefixexpContext* context) override;
+    std::any visitVarOrExp(LuaParser::VarOrExpContext* context) override;
+    std::any visitVar(LuaParser::VarContext* context) override;
+    std::any visitVarSuffix(LuaParser::VarSuffixContext* context) override;
+    std::any visitNameAndArgs(LuaParser::NameAndArgsContext* context) override;
+    std::any visitArgs(LuaParser::ArgsContext* context) override;
 
-    antlrcpp::Any visitFunctiondef(LuaParser::FunctiondefContext* context) override;
-    antlrcpp::Any visitFuncbody(LuaParser::FuncbodyContext* context) override;
-    antlrcpp::Any visitParlist(LuaParser::ParlistContext* context) override;
+    std::any visitFunctiondef(LuaParser::FunctiondefContext* context) override;
+    std::any visitFuncbody(LuaParser::FuncbodyContext* context) override;
+    std::any visitParlist(LuaParser::ParlistContext* context) override;
 
-    antlrcpp::Any visitTableconstructor(LuaParser::TableconstructorContext* context) override;
-    antlrcpp::Any visitFieldlist(LuaParser::FieldlistContext* context) override;
-    antlrcpp::Any visitField(LuaParser::FieldContext* context) override;
-    antlrcpp::Any visitFieldsep(LuaParser::FieldsepContext* context) override;
+    std::any visitTableconstructor(LuaParser::TableconstructorContext* context) override;
+    std::any visitFieldlist(LuaParser::FieldlistContext* context) override;
+    std::any visitField(LuaParser::FieldContext* context) override;
+    std::any visitFieldsep(LuaParser::FieldsepContext* context) override;
 
-    antlrcpp::Any visitChildren(tree::ParseTree* tree) override;
-    antlrcpp::Any visitTerminal(tree::TerminalNode* node) override;
+    std::any visitChildren(tree::ParseTree* tree) override;
+    std::any visitTerminal(tree::TerminalNode* node) override;
 
     std::pair<int, int> expInfo(LuaParser::ExpContext* ctx);
 
@@ -96,6 +96,8 @@ class FormatVisitor : public LuaBaseVisitor {
     bool isBlockEmpty(LuaParser::BlockContext* ctx);
     void visitBlockAndComment(tree::ParseTree* previousNode, LuaParser::BlockContext* ctx, BlockType blockType);
     void visitNextNameAndArgs(LuaParser::VarSuffixContext* ctx);
+
+    void visitLinkOperator(LuaParser::ExpContext* context, antlr4::ParserRuleContext* linkOperator);
 
     void pushWriter();
     void pushWriterWithColumn();

@@ -6,7 +6,7 @@
 using namespace antlr4;
 
 // varlist EQL explist;
-antlrcpp::Any FormatVisitor::visitVarDecl(LuaParser::VarDeclContext* ctx) {
+std::any FormatVisitor::visitVarDecl(LuaParser::VarDeclContext* ctx) {
     LOG_FUNCTION_BEGIN();
     visitVarlist(ctx->varlist());
     cur_writer() << commentAfter(ctx->varlist(), " ");
@@ -22,7 +22,7 @@ antlrcpp::Any FormatVisitor::visitVarDecl(LuaParser::VarDeclContext* ctx) {
 }
 
 // var (COMMA var)*;
-antlrcpp::Any FormatVisitor::visitVarlist(LuaParser::VarlistContext* ctx) {
+std::any FormatVisitor::visitVarlist(LuaParser::VarlistContext* ctx) {
     LOG_FUNCTION_BEGIN();
     visitVar(ctx->var().front());
     int n = ctx->COMMA().size();
@@ -42,7 +42,7 @@ antlrcpp::Any FormatVisitor::visitVarlist(LuaParser::VarlistContext* ctx) {
 }
 
 // LOCAL attnamelist (EQL explist)? SEMI?;
-antlrcpp::Any FormatVisitor::visitLocalVarDecl(LuaParser::LocalVarDeclContext* ctx) {
+std::any FormatVisitor::visitLocalVarDecl(LuaParser::LocalVarDeclContext* ctx) {
     LOG_FUNCTION_BEGIN();
     cur_writer() << ctx->LOCAL()->getText();
     cur_writer() << commentAfter(ctx->LOCAL(), " ");
@@ -66,7 +66,7 @@ antlrcpp::Any FormatVisitor::visitLocalVarDecl(LuaParser::LocalVarDeclContext* c
 }
 
 // nameattrib (COMMA nameattrib)*;
-antlrcpp::Any FormatVisitor::visitAttnamelist(LuaParser::AttnamelistContext* ctx) {
+std::any FormatVisitor::visitAttnamelist(LuaParser::AttnamelistContext* ctx) {
     LOG_FUNCTION_BEGIN();
     int n = ctx->COMMA().size();
     bool hasIncIndent = false;
@@ -138,7 +138,7 @@ antlrcpp::Any FormatVisitor::visitAttnamelist(LuaParser::AttnamelistContext* ctx
 }
 
 // NAME (LT NAME GT)?;
-antlrcpp::Any FormatVisitor::visitNameattrib(LuaParser::NameattribContext* ctx) {
+std::any FormatVisitor::visitNameattrib(LuaParser::NameattribContext* ctx) {
     LOG_FUNCTION_BEGIN();
     cur_writer() << ctx->NAME().front()->getText();
     if (ctx->LT() != nullptr) {

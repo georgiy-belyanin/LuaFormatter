@@ -226,7 +226,7 @@ std::string FormatVisitor::formatLineComment(Token* token) {
     return comment;
 }
 
-antlrcpp::Any FormatVisitor::visitString(LuaParser::StringContext* ctx) {
+std::any FormatVisitor::visitString(LuaParser::StringContext* ctx) {
     if ((ctx->NORMALSTRING() == nullptr) && (ctx->CHARSTRING() == nullptr)) {
         cur_writer() << ctx->getText();
         return nullptr;
@@ -285,7 +285,7 @@ antlrcpp::Any FormatVisitor::visitString(LuaParser::StringContext* ctx) {
     return nullptr;
 }
 
-antlrcpp::Any FormatVisitor::visitChildren(tree::ParseTree* node) {
+std::any FormatVisitor::visitChildren(tree::ParseTree* node) {
     size_t n = node->children.size();
     for (size_t i = 0; i < n; i++) {
         node->children[i]->accept(this);
@@ -293,7 +293,7 @@ antlrcpp::Any FormatVisitor::visitChildren(tree::ParseTree* node) {
     return nullptr;
 }
 
-antlrcpp::Any FormatVisitor::visitTerminal(tree::TerminalNode* node) {
+std::any FormatVisitor::visitTerminal(tree::TerminalNode* node) {
     cur_writer() << node->getText();
     return nullptr;
 }

@@ -7,7 +7,7 @@
 using namespace antlr4;
 
 // NAME (COMMA NAME)*;
-antlrcpp::Any FormatVisitor::visitNamelist(LuaParser::NamelistContext* ctx) {
+std::any FormatVisitor::visitNamelist(LuaParser::NamelistContext* ctx) {
     LOG_FUNCTION_BEGIN();
     int n = ctx->COMMA().size();
     bool hasIncIndent = false;

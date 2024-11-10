@@ -7,7 +7,7 @@
 using namespace antlr4;
 
 // LB fieldlist? RB;
-antlrcpp::Any FormatVisitor::visitTableconstructor(LuaParser::TableconstructorContext* ctx) {
+std::any FormatVisitor::visitTableconstructor(LuaParser::TableconstructorContext* ctx) {
     LOG_FUNCTION_BEGIN();
     cur_writer() << ctx->LB()->getText();
     // disable indentForAlign_ in table
@@ -120,7 +120,7 @@ antlrcpp::Any FormatVisitor::visitTableconstructor(LuaParser::TableconstructorCo
 }
 
 // field (fieldsep field)* fieldsep?;
-antlrcpp::Any FormatVisitor::visitFieldlist(LuaParser::FieldlistContext* ctx) {
+std::any FormatVisitor::visitFieldlist(LuaParser::FieldlistContext* ctx) {
     LOG_FUNCTION_BEGIN();
     auto n = ctx->field().size();
     auto sn = ctx->fieldsep().size();
@@ -196,7 +196,7 @@ antlrcpp::Any FormatVisitor::visitFieldlist(LuaParser::FieldlistContext* ctx) {
 }
 
 // LSB exp RSB EQL exp | NAME EQL exp | exp;
-antlrcpp::Any FormatVisitor::visitField(LuaParser::FieldContext* ctx) {
+std::any FormatVisitor::visitField(LuaParser::FieldContext* ctx) {
     LOG_FUNCTION_BEGIN();
     std::string eq_space = config_.get<bool>("spaces_around_equals_in_field") ? " " : "";
     if (ctx->LSB() != nullptr) {
@@ -222,7 +222,7 @@ antlrcpp::Any FormatVisitor::visitField(LuaParser::FieldContext* ctx) {
     return nullptr;
 }
 
-antlrcpp::Any FormatVisitor::visitFieldsep(LuaParser::FieldsepContext* context) {
+std::any FormatVisitor::visitFieldsep(LuaParser::FieldsepContext* context) {
     cur_writer() << config_.get<std::string>("table_sep");
     return nullptr;
 }

@@ -1,5 +1,5 @@
 
-// Generated from Lua.g4 by ANTLR 4.7.1
+// Generated from Lua.g4 by ANTLR 4.13.2
 
 
 #include "LuaVisitor.h"
@@ -8,14 +8,269 @@
 
 
 using namespace antlrcpp;
+
 using namespace antlr4;
 
-LuaParser::LuaParser(TokenStream *input) : Parser(input) {
-  _interpreter = new atn::ParserATNSimulator(this, _atn, _decisionToDFA, _sharedContextCache);
+namespace {
+
+struct LuaParserStaticData final {
+  LuaParserStaticData(std::vector<std::string> ruleNames,
+                        std::vector<std::string> literalNames,
+                        std::vector<std::string> symbolicNames)
+      : ruleNames(std::move(ruleNames)), literalNames(std::move(literalNames)),
+        symbolicNames(std::move(symbolicNames)),
+        vocabulary(this->literalNames, this->symbolicNames) {}
+
+  LuaParserStaticData(const LuaParserStaticData&) = delete;
+  LuaParserStaticData(LuaParserStaticData&&) = delete;
+  LuaParserStaticData& operator=(const LuaParserStaticData&) = delete;
+  LuaParserStaticData& operator=(LuaParserStaticData&&) = delete;
+
+  std::vector<antlr4::dfa::DFA> decisionToDFA;
+  antlr4::atn::PredictionContextCache sharedContextCache;
+  const std::vector<std::string> ruleNames;
+  const std::vector<std::string> literalNames;
+  const std::vector<std::string> symbolicNames;
+  const antlr4::dfa::Vocabulary vocabulary;
+  antlr4::atn::SerializedATNView serializedATN;
+  std::unique_ptr<antlr4::atn::ATN> atn;
+};
+
+::antlr4::internal::OnceFlag luaParserOnceFlag;
+#if ANTLR4_USE_THREAD_LOCAL_CACHE
+static thread_local
+#endif
+std::unique_ptr<LuaParserStaticData> luaParserStaticData = nullptr;
+
+void luaParserInitialize() {
+#if ANTLR4_USE_THREAD_LOCAL_CACHE
+  if (luaParserStaticData != nullptr) {
+    return;
+  }
+#else
+  assert(luaParserStaticData == nullptr);
+#endif
+  auto staticData = std::make_unique<LuaParserStaticData>(
+    std::vector<std::string>{
+      "chunk", "block", "stat", "varDecl", "functioncall", "gotoStat", "doStat", 
+      "whileStat", "repeatStat", "ifStat", "forStat", "forInStat", "funcStat", 
+      "localFuncStat", "localVarDecl", "retstat", "label", "funcname", "varlist", 
+      "namelist", "attnamelist", "nameattrib", "explist", "exp", "longString", 
+      "prefixexp", "varOrExp", "var", "varSuffix", "nameAndArgs", "args", 
+      "functiondef", "funcbody", "parlist", "tableconstructor", "fieldlist", 
+      "field", "fieldsep", "operatorOr", "operatorAnd", "operatorComparison", 
+      "operatorStrcat", "operatorAddSub", "operatorMulDivMod", "operatorBitwise", 
+      "operatorUnary", "operatorPower", "unaryOperator", "number", "string"
+    },
+    std::vector<std::string>{
+      "", "'or'", "'and'", "'<='", "'>='", "'~='", "'=='", "'..'", "'+'", 
+      "'-'", "'*'", "'/'", "'%'", "'//'", "'&'", "'|'", "'~'", "'<<'", "'>>'", 
+      "'not'", "'#'", "'^'", "'function'", "'return'", "'local'", "'true'", 
+      "'false'", "'nil'", "'break'", "'do'", "'end'", "'goto'", "'while'", 
+      "'repeat'", "'until'", "'for'", "'if'", "'then'", "'else'", "'elseif'", 
+      "'in'", "';'", "','", "'.'", "'='", "':'", "'::'", "'...'", "'<'", 
+      "'>'", "'('", "')'", "'{'", "'}'", "'['", "']'"
+    },
+    std::vector<std::string>{
+      "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 
+      "", "", "", "", "", "FUNCTION", "RETURN", "LOCAL", "TRUE", "FALSE", 
+      "NIL", "BREAK", "DO", "END", "GOTO", "WHILE", "REPEAT", "UNTIL", "FOR", 
+      "IF", "THEN", "ELSE", "ELSEIF", "IN", "SEMI", "COMMA", "DOT", "EQL", 
+      "COLON", "DCOLON", "ELLIPSIS", "LT", "GT", "LP", "RP", "LB", "RB", 
+      "LSB", "RSB", "NAME", "NORMALSTRING", "CHARSTRING", "LONGSTRING", 
+      "INT", "HEX", "FLOAT", "HEX_FLOAT", "COMMENT", "LINE_COMMENT", "WS", 
+      "SHEBANG"
+    }
+  );
+  static const int32_t serializedATNSegment[] = {
+  	4,1,67,478,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,
+  	7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,
+  	14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,7,20,2,21,7,
+  	21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,7,27,2,28,7,
+  	28,2,29,7,29,2,30,7,30,2,31,7,31,2,32,7,32,2,33,7,33,2,34,7,34,2,35,7,
+  	35,2,36,7,36,2,37,7,37,2,38,7,38,2,39,7,39,2,40,7,40,2,41,7,41,2,42,7,
+  	42,2,43,7,43,2,44,7,44,2,45,7,45,2,46,7,46,2,47,7,47,2,48,7,48,2,49,7,
+  	49,1,0,3,0,102,8,0,1,0,1,0,1,0,1,1,5,1,108,8,1,10,1,12,1,111,9,1,1,1,
+  	3,1,114,8,1,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,
+  	2,3,2,131,8,2,1,3,1,3,1,3,1,3,3,3,137,8,3,1,4,1,4,4,4,141,8,4,11,4,12,
+  	4,142,1,4,3,4,146,8,4,1,5,1,5,1,5,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,
+  	1,7,1,8,1,8,1,8,1,8,1,8,3,8,166,8,8,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,
+  	9,5,9,177,8,9,10,9,12,9,180,9,9,1,9,1,9,3,9,184,8,9,1,9,1,9,1,10,1,10,
+  	1,10,1,10,1,10,1,10,1,10,1,10,3,10,196,8,10,1,10,1,10,1,10,1,10,1,11,
+  	1,11,1,11,1,11,1,11,1,11,1,11,1,11,1,12,1,12,1,12,1,12,1,13,1,13,1,13,
+  	1,13,1,13,1,14,1,14,1,14,1,14,3,14,223,8,14,1,14,3,14,226,8,14,1,15,1,
+  	15,3,15,230,8,15,1,15,3,15,233,8,15,1,16,1,16,1,16,1,16,1,17,1,17,1,17,
+  	5,17,242,8,17,10,17,12,17,245,9,17,1,17,1,17,3,17,249,8,17,1,18,1,18,
+  	1,18,5,18,254,8,18,10,18,12,18,257,9,18,1,19,1,19,1,19,5,19,262,8,19,
+  	10,19,12,19,265,9,19,1,20,1,20,1,20,5,20,270,8,20,10,20,12,20,273,9,20,
+  	1,21,1,21,1,21,1,21,3,21,279,8,21,1,22,1,22,1,22,5,22,284,8,22,10,22,
+  	12,22,287,9,22,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,
+  	1,23,1,23,1,23,3,23,303,8,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,
+  	1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,
+  	1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,5,23,337,8,23,10,23,
+  	12,23,340,9,23,1,24,1,24,1,24,1,24,1,25,1,25,5,25,348,8,25,10,25,12,25,
+  	351,9,25,1,26,1,26,1,26,1,26,1,26,3,26,358,8,26,1,27,1,27,1,27,1,27,1,
+  	27,1,27,3,27,366,8,27,1,27,5,27,369,8,27,10,27,12,27,372,9,27,1,28,5,
+  	28,375,8,28,10,28,12,28,378,9,28,1,28,1,28,1,28,1,28,1,28,1,28,3,28,386,
+  	8,28,1,29,1,29,3,29,390,8,29,1,29,1,29,1,30,1,30,3,30,396,8,30,1,30,1,
+  	30,1,30,3,30,401,8,30,1,31,1,31,1,31,1,32,1,32,3,32,408,8,32,1,32,1,32,
+  	1,32,1,32,1,33,1,33,1,33,3,33,417,8,33,1,33,3,33,420,8,33,1,34,1,34,3,
+  	34,424,8,34,1,34,1,34,1,35,1,35,1,35,1,35,5,35,432,8,35,10,35,12,35,435,
+  	9,35,1,35,3,35,438,8,35,1,36,1,36,1,36,1,36,1,36,1,36,1,36,1,36,1,36,
+  	1,36,3,36,450,8,36,1,37,1,37,1,38,1,38,1,39,1,39,1,40,1,40,1,41,1,41,
+  	1,42,1,42,1,43,1,43,1,44,1,44,1,45,1,45,1,46,1,46,1,47,1,47,1,48,1,48,
+  	1,49,1,49,1,49,0,1,46,50,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,
+  	34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,
+  	80,82,84,86,88,90,92,94,96,98,0,8,1,0,41,42,2,0,3,6,48,49,1,0,8,9,1,0,
+  	10,13,1,0,14,18,3,0,9,9,16,16,19,20,1,0,60,63,1,0,57,59,498,0,101,1,0,
+  	0,0,2,109,1,0,0,0,4,130,1,0,0,0,6,132,1,0,0,0,8,138,1,0,0,0,10,147,1,
+  	0,0,0,12,150,1,0,0,0,14,154,1,0,0,0,16,160,1,0,0,0,18,167,1,0,0,0,20,
+  	187,1,0,0,0,22,201,1,0,0,0,24,209,1,0,0,0,26,213,1,0,0,0,28,218,1,0,0,
+  	0,30,227,1,0,0,0,32,234,1,0,0,0,34,238,1,0,0,0,36,250,1,0,0,0,38,258,
+  	1,0,0,0,40,266,1,0,0,0,42,274,1,0,0,0,44,280,1,0,0,0,46,302,1,0,0,0,48,
+  	341,1,0,0,0,50,345,1,0,0,0,52,357,1,0,0,0,54,365,1,0,0,0,56,376,1,0,0,
+  	0,58,389,1,0,0,0,60,400,1,0,0,0,62,402,1,0,0,0,64,405,1,0,0,0,66,419,
+  	1,0,0,0,68,421,1,0,0,0,70,427,1,0,0,0,72,449,1,0,0,0,74,451,1,0,0,0,76,
+  	453,1,0,0,0,78,455,1,0,0,0,80,457,1,0,0,0,82,459,1,0,0,0,84,461,1,0,0,
+  	0,86,463,1,0,0,0,88,465,1,0,0,0,90,467,1,0,0,0,92,469,1,0,0,0,94,471,
+  	1,0,0,0,96,473,1,0,0,0,98,475,1,0,0,0,100,102,5,67,0,0,101,100,1,0,0,
+  	0,101,102,1,0,0,0,102,103,1,0,0,0,103,104,3,2,1,0,104,105,5,0,0,1,105,
+  	1,1,0,0,0,106,108,3,4,2,0,107,106,1,0,0,0,108,111,1,0,0,0,109,107,1,0,
+  	0,0,109,110,1,0,0,0,110,113,1,0,0,0,111,109,1,0,0,0,112,114,3,30,15,0,
+  	113,112,1,0,0,0,113,114,1,0,0,0,114,3,1,0,0,0,115,131,5,41,0,0,116,131,
+  	3,6,3,0,117,131,3,8,4,0,118,131,3,32,16,0,119,131,5,28,0,0,120,131,3,
+  	10,5,0,121,131,3,12,6,0,122,131,3,14,7,0,123,131,3,16,8,0,124,131,3,18,
+  	9,0,125,131,3,20,10,0,126,131,3,22,11,0,127,131,3,24,12,0,128,131,3,26,
+  	13,0,129,131,3,28,14,0,130,115,1,0,0,0,130,116,1,0,0,0,130,117,1,0,0,
+  	0,130,118,1,0,0,0,130,119,1,0,0,0,130,120,1,0,0,0,130,121,1,0,0,0,130,
+  	122,1,0,0,0,130,123,1,0,0,0,130,124,1,0,0,0,130,125,1,0,0,0,130,126,1,
+  	0,0,0,130,127,1,0,0,0,130,128,1,0,0,0,130,129,1,0,0,0,131,5,1,0,0,0,132,
+  	133,3,36,18,0,133,134,5,44,0,0,134,136,3,44,22,0,135,137,5,41,0,0,136,
+  	135,1,0,0,0,136,137,1,0,0,0,137,7,1,0,0,0,138,140,3,52,26,0,139,141,3,
+  	58,29,0,140,139,1,0,0,0,141,142,1,0,0,0,142,140,1,0,0,0,142,143,1,0,0,
+  	0,143,145,1,0,0,0,144,146,5,41,0,0,145,144,1,0,0,0,145,146,1,0,0,0,146,
+  	9,1,0,0,0,147,148,5,31,0,0,148,149,5,56,0,0,149,11,1,0,0,0,150,151,5,
+  	29,0,0,151,152,3,2,1,0,152,153,5,30,0,0,153,13,1,0,0,0,154,155,5,32,0,
+  	0,155,156,3,46,23,0,156,157,5,29,0,0,157,158,3,2,1,0,158,159,5,30,0,0,
+  	159,15,1,0,0,0,160,161,5,33,0,0,161,162,3,2,1,0,162,163,5,34,0,0,163,
+  	165,3,46,23,0,164,166,5,41,0,0,165,164,1,0,0,0,165,166,1,0,0,0,166,17,
+  	1,0,0,0,167,168,5,36,0,0,168,169,3,46,23,0,169,170,5,37,0,0,170,178,3,
+  	2,1,0,171,172,5,39,0,0,172,173,3,46,23,0,173,174,5,37,0,0,174,175,3,2,
+  	1,0,175,177,1,0,0,0,176,171,1,0,0,0,177,180,1,0,0,0,178,176,1,0,0,0,178,
+  	179,1,0,0,0,179,183,1,0,0,0,180,178,1,0,0,0,181,182,5,38,0,0,182,184,
+  	3,2,1,0,183,181,1,0,0,0,183,184,1,0,0,0,184,185,1,0,0,0,185,186,5,30,
+  	0,0,186,19,1,0,0,0,187,188,5,35,0,0,188,189,5,56,0,0,189,190,5,44,0,0,
+  	190,191,3,46,23,0,191,192,5,42,0,0,192,195,3,46,23,0,193,194,5,42,0,0,
+  	194,196,3,46,23,0,195,193,1,0,0,0,195,196,1,0,0,0,196,197,1,0,0,0,197,
+  	198,5,29,0,0,198,199,3,2,1,0,199,200,5,30,0,0,200,21,1,0,0,0,201,202,
+  	5,35,0,0,202,203,3,38,19,0,203,204,5,40,0,0,204,205,3,44,22,0,205,206,
+  	5,29,0,0,206,207,3,2,1,0,207,208,5,30,0,0,208,23,1,0,0,0,209,210,5,22,
+  	0,0,210,211,3,34,17,0,211,212,3,64,32,0,212,25,1,0,0,0,213,214,5,24,0,
+  	0,214,215,5,22,0,0,215,216,5,56,0,0,216,217,3,64,32,0,217,27,1,0,0,0,
+  	218,219,5,24,0,0,219,222,3,40,20,0,220,221,5,44,0,0,221,223,3,44,22,0,
+  	222,220,1,0,0,0,222,223,1,0,0,0,223,225,1,0,0,0,224,226,5,41,0,0,225,
+  	224,1,0,0,0,225,226,1,0,0,0,226,29,1,0,0,0,227,229,5,23,0,0,228,230,3,
+  	44,22,0,229,228,1,0,0,0,229,230,1,0,0,0,230,232,1,0,0,0,231,233,5,41,
+  	0,0,232,231,1,0,0,0,232,233,1,0,0,0,233,31,1,0,0,0,234,235,5,46,0,0,235,
+  	236,5,56,0,0,236,237,5,46,0,0,237,33,1,0,0,0,238,243,5,56,0,0,239,240,
+  	5,43,0,0,240,242,5,56,0,0,241,239,1,0,0,0,242,245,1,0,0,0,243,241,1,0,
+  	0,0,243,244,1,0,0,0,244,248,1,0,0,0,245,243,1,0,0,0,246,247,5,45,0,0,
+  	247,249,5,56,0,0,248,246,1,0,0,0,248,249,1,0,0,0,249,35,1,0,0,0,250,255,
+  	3,54,27,0,251,252,5,42,0,0,252,254,3,54,27,0,253,251,1,0,0,0,254,257,
+  	1,0,0,0,255,253,1,0,0,0,255,256,1,0,0,0,256,37,1,0,0,0,257,255,1,0,0,
+  	0,258,263,5,56,0,0,259,260,5,42,0,0,260,262,5,56,0,0,261,259,1,0,0,0,
+  	262,265,1,0,0,0,263,261,1,0,0,0,263,264,1,0,0,0,264,39,1,0,0,0,265,263,
+  	1,0,0,0,266,271,3,42,21,0,267,268,5,42,0,0,268,270,3,42,21,0,269,267,
+  	1,0,0,0,270,273,1,0,0,0,271,269,1,0,0,0,271,272,1,0,0,0,272,41,1,0,0,
+  	0,273,271,1,0,0,0,274,278,5,56,0,0,275,276,5,48,0,0,276,277,5,56,0,0,
+  	277,279,5,49,0,0,278,275,1,0,0,0,278,279,1,0,0,0,279,43,1,0,0,0,280,285,
+  	3,46,23,0,281,282,5,42,0,0,282,284,3,46,23,0,283,281,1,0,0,0,284,287,
+  	1,0,0,0,285,283,1,0,0,0,285,286,1,0,0,0,286,45,1,0,0,0,287,285,1,0,0,
+  	0,288,289,6,23,-1,0,289,303,5,27,0,0,290,303,5,26,0,0,291,303,5,25,0,
+  	0,292,303,3,96,48,0,293,303,3,98,49,0,294,303,5,47,0,0,295,303,3,50,25,
+  	0,296,303,3,62,31,0,297,303,3,68,34,0,298,303,3,48,24,0,299,300,3,94,
+  	47,0,300,301,3,46,23,8,301,303,1,0,0,0,302,288,1,0,0,0,302,290,1,0,0,
+  	0,302,291,1,0,0,0,302,292,1,0,0,0,302,293,1,0,0,0,302,294,1,0,0,0,302,
+  	295,1,0,0,0,302,296,1,0,0,0,302,297,1,0,0,0,302,298,1,0,0,0,302,299,1,
+  	0,0,0,303,338,1,0,0,0,304,305,10,9,0,0,305,306,3,92,46,0,306,307,3,46,
+  	23,9,307,337,1,0,0,0,308,309,10,7,0,0,309,310,3,86,43,0,310,311,3,46,
+  	23,8,311,337,1,0,0,0,312,313,10,6,0,0,313,314,3,84,42,0,314,315,3,46,
+  	23,7,315,337,1,0,0,0,316,317,10,5,0,0,317,318,3,82,41,0,318,319,3,46,
+  	23,5,319,337,1,0,0,0,320,321,10,4,0,0,321,322,3,80,40,0,322,323,3,46,
+  	23,5,323,337,1,0,0,0,324,325,10,3,0,0,325,326,3,78,39,0,326,327,3,46,
+  	23,4,327,337,1,0,0,0,328,329,10,2,0,0,329,330,3,76,38,0,330,331,3,46,
+  	23,3,331,337,1,0,0,0,332,333,10,1,0,0,333,334,3,88,44,0,334,335,3,46,
+  	23,2,335,337,1,0,0,0,336,304,1,0,0,0,336,308,1,0,0,0,336,312,1,0,0,0,
+  	336,316,1,0,0,0,336,320,1,0,0,0,336,324,1,0,0,0,336,328,1,0,0,0,336,332,
+  	1,0,0,0,337,340,1,0,0,0,338,336,1,0,0,0,338,339,1,0,0,0,339,47,1,0,0,
+  	0,340,338,1,0,0,0,341,342,3,98,49,0,342,343,3,82,41,0,343,344,3,98,49,
+  	0,344,49,1,0,0,0,345,349,3,52,26,0,346,348,3,58,29,0,347,346,1,0,0,0,
+  	348,351,1,0,0,0,349,347,1,0,0,0,349,350,1,0,0,0,350,51,1,0,0,0,351,349,
+  	1,0,0,0,352,358,3,54,27,0,353,354,5,50,0,0,354,355,3,46,23,0,355,356,
+  	5,51,0,0,356,358,1,0,0,0,357,352,1,0,0,0,357,353,1,0,0,0,358,53,1,0,0,
+  	0,359,366,5,56,0,0,360,361,5,50,0,0,361,362,3,46,23,0,362,363,5,51,0,
+  	0,363,364,3,56,28,0,364,366,1,0,0,0,365,359,1,0,0,0,365,360,1,0,0,0,366,
+  	370,1,0,0,0,367,369,3,56,28,0,368,367,1,0,0,0,369,372,1,0,0,0,370,368,
+  	1,0,0,0,370,371,1,0,0,0,371,55,1,0,0,0,372,370,1,0,0,0,373,375,3,58,29,
+  	0,374,373,1,0,0,0,375,378,1,0,0,0,376,374,1,0,0,0,376,377,1,0,0,0,377,
+  	385,1,0,0,0,378,376,1,0,0,0,379,380,5,54,0,0,380,381,3,46,23,0,381,382,
+  	5,55,0,0,382,386,1,0,0,0,383,384,5,43,0,0,384,386,5,56,0,0,385,379,1,
+  	0,0,0,385,383,1,0,0,0,386,57,1,0,0,0,387,388,5,45,0,0,388,390,5,56,0,
+  	0,389,387,1,0,0,0,389,390,1,0,0,0,390,391,1,0,0,0,391,392,3,60,30,0,392,
+  	59,1,0,0,0,393,395,5,50,0,0,394,396,3,44,22,0,395,394,1,0,0,0,395,396,
+  	1,0,0,0,396,397,1,0,0,0,397,401,5,51,0,0,398,401,3,68,34,0,399,401,3,
+  	98,49,0,400,393,1,0,0,0,400,398,1,0,0,0,400,399,1,0,0,0,401,61,1,0,0,
+  	0,402,403,5,22,0,0,403,404,3,64,32,0,404,63,1,0,0,0,405,407,5,50,0,0,
+  	406,408,3,66,33,0,407,406,1,0,0,0,407,408,1,0,0,0,408,409,1,0,0,0,409,
+  	410,5,51,0,0,410,411,3,2,1,0,411,412,5,30,0,0,412,65,1,0,0,0,413,416,
+  	3,38,19,0,414,415,5,42,0,0,415,417,5,47,0,0,416,414,1,0,0,0,416,417,1,
+  	0,0,0,417,420,1,0,0,0,418,420,5,47,0,0,419,413,1,0,0,0,419,418,1,0,0,
+  	0,420,67,1,0,0,0,421,423,5,52,0,0,422,424,3,70,35,0,423,422,1,0,0,0,423,
+  	424,1,0,0,0,424,425,1,0,0,0,425,426,5,53,0,0,426,69,1,0,0,0,427,433,3,
+  	72,36,0,428,429,3,74,37,0,429,430,3,72,36,0,430,432,1,0,0,0,431,428,1,
+  	0,0,0,432,435,1,0,0,0,433,431,1,0,0,0,433,434,1,0,0,0,434,437,1,0,0,0,
+  	435,433,1,0,0,0,436,438,3,74,37,0,437,436,1,0,0,0,437,438,1,0,0,0,438,
+  	71,1,0,0,0,439,440,5,54,0,0,440,441,3,46,23,0,441,442,5,55,0,0,442,443,
+  	5,44,0,0,443,444,3,46,23,0,444,450,1,0,0,0,445,446,5,56,0,0,446,447,5,
+  	44,0,0,447,450,3,46,23,0,448,450,3,46,23,0,449,439,1,0,0,0,449,445,1,
+  	0,0,0,449,448,1,0,0,0,450,73,1,0,0,0,451,452,7,0,0,0,452,75,1,0,0,0,453,
+  	454,5,1,0,0,454,77,1,0,0,0,455,456,5,2,0,0,456,79,1,0,0,0,457,458,7,1,
+  	0,0,458,81,1,0,0,0,459,460,5,7,0,0,460,83,1,0,0,0,461,462,7,2,0,0,462,
+  	85,1,0,0,0,463,464,7,3,0,0,464,87,1,0,0,0,465,466,7,4,0,0,466,89,1,0,
+  	0,0,467,468,7,5,0,0,468,91,1,0,0,0,469,470,5,21,0,0,470,93,1,0,0,0,471,
+  	472,7,5,0,0,472,95,1,0,0,0,473,474,7,6,0,0,474,97,1,0,0,0,475,476,7,7,
+  	0,0,476,99,1,0,0,0,41,101,109,113,130,136,142,145,165,178,183,195,222,
+  	225,229,232,243,248,255,263,271,278,285,302,336,338,349,357,365,370,376,
+  	385,389,395,400,407,416,419,423,433,437,449
+  };
+  staticData->serializedATN = antlr4::atn::SerializedATNView(serializedATNSegment, sizeof(serializedATNSegment) / sizeof(serializedATNSegment[0]));
+
+  antlr4::atn::ATNDeserializer deserializer;
+  staticData->atn = deserializer.deserialize(staticData->serializedATN);
+
+  const size_t count = staticData->atn->getNumberOfDecisions();
+  staticData->decisionToDFA.reserve(count);
+  for (size_t i = 0; i < count; i++) { 
+    staticData->decisionToDFA.emplace_back(staticData->atn->getDecisionState(i), i);
+  }
+  luaParserStaticData = std::move(staticData);
+}
+
+}
+
+LuaParser::LuaParser(TokenStream *input) : LuaParser(input, antlr4::atn::ParserATNSimulatorOptions()) {}
+
+LuaParser::LuaParser(TokenStream *input, const antlr4::atn::ParserATNSimulatorOptions &options) : Parser(input) {
+  LuaParser::initialize();
+  _interpreter = new atn::ParserATNSimulator(this, *luaParserStaticData->atn, luaParserStaticData->decisionToDFA, luaParserStaticData->sharedContextCache, options);
 }
 
 LuaParser::~LuaParser() {
   delete _interpreter;
+}
+
+const atn::ATN& LuaParser::getATN() const {
+  return *luaParserStaticData->atn;
 }
 
 std::string LuaParser::getGrammarFileName() const {
@@ -23,11 +278,15 @@ std::string LuaParser::getGrammarFileName() const {
 }
 
 const std::vector<std::string>& LuaParser::getRuleNames() const {
-  return _ruleNames;
+  return luaParserStaticData->ruleNames;
 }
 
-dfa::Vocabulary& LuaParser::getVocabulary() const {
-  return _vocabulary;
+const dfa::Vocabulary& LuaParser::getVocabulary() const {
+  return luaParserStaticData->vocabulary;
+}
+
+antlr4::atn::SerializedATNView LuaParser::getSerializedATN() const {
+  return luaParserStaticData->serializedATN;
 }
 
 
@@ -54,7 +313,8 @@ size_t LuaParser::ChunkContext::getRuleIndex() const {
   return LuaParser::RuleChunk;
 }
 
-antlrcpp::Any LuaParser::ChunkContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::ChunkContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitChunk(this);
   else
@@ -66,22 +326,26 @@ LuaParser::ChunkContext* LuaParser::chunk() {
   enterRule(_localctx, 0, LuaParser::RuleChunk);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(83);
+    setState(101);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == LuaParser::SHEBANG) {
-      setState(82);
+      setState(100);
       match(LuaParser::SHEBANG);
     }
-    setState(85);
+    setState(103);
     block();
-    setState(86);
+    setState(104);
     match(LuaParser::EOF);
    
   }
@@ -117,7 +381,8 @@ size_t LuaParser::BlockContext::getRuleIndex() const {
   return LuaParser::RuleBlock;
 }
 
-antlrcpp::Any LuaParser::BlockContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::BlockContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitBlock(this);
   else
@@ -129,40 +394,32 @@ LuaParser::BlockContext* LuaParser::block() {
   enterRule(_localctx, 2, LuaParser::RuleBlock);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(91);
+    setState(109);
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << LuaParser::FUNCTION)
-      | (1ULL << LuaParser::LOCAL)
-      | (1ULL << LuaParser::BREAK)
-      | (1ULL << LuaParser::DO)
-      | (1ULL << LuaParser::GOTO)
-      | (1ULL << LuaParser::WHILE)
-      | (1ULL << LuaParser::REPEAT)
-      | (1ULL << LuaParser::FOR)
-      | (1ULL << LuaParser::IF)
-      | (1ULL << LuaParser::SEMI)
-      | (1ULL << LuaParser::DCOLON)
-      | (1ULL << LuaParser::LP)
-      | (1ULL << LuaParser::NAME))) != 0)) {
-      setState(88);
+      ((1ULL << _la) & 73256180650082304) != 0)) {
+      setState(106);
       stat();
-      setState(93);
+      setState(111);
       _errHandler->sync(this);
       _la = _input->LA(1);
     }
-    setState(95);
+    setState(113);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == LuaParser::RETURN) {
-      setState(94);
+      setState(112);
       retstat();
     }
    
@@ -247,7 +504,8 @@ size_t LuaParser::StatContext::getRuleIndex() const {
   return LuaParser::RuleStat;
 }
 
-antlrcpp::Any LuaParser::StatContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::StatContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitStat(this);
   else
@@ -258,118 +516,124 @@ LuaParser::StatContext* LuaParser::stat() {
   StatContext *_localctx = _tracker.createInstance<StatContext>(_ctx, getState());
   enterRule(_localctx, 4, LuaParser::RuleStat);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
-    setState(112);
+    setState(130);
     _errHandler->sync(this);
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 3, _ctx)) {
     case 1: {
       enterOuterAlt(_localctx, 1);
-      setState(97);
+      setState(115);
       match(LuaParser::SEMI);
       break;
     }
 
     case 2: {
       enterOuterAlt(_localctx, 2);
-      setState(98);
+      setState(116);
       varDecl();
       break;
     }
 
     case 3: {
       enterOuterAlt(_localctx, 3);
-      setState(99);
+      setState(117);
       functioncall();
       break;
     }
 
     case 4: {
       enterOuterAlt(_localctx, 4);
-      setState(100);
+      setState(118);
       label();
       break;
     }
 
     case 5: {
       enterOuterAlt(_localctx, 5);
-      setState(101);
+      setState(119);
       match(LuaParser::BREAK);
       break;
     }
 
     case 6: {
       enterOuterAlt(_localctx, 6);
-      setState(102);
+      setState(120);
       gotoStat();
       break;
     }
 
     case 7: {
       enterOuterAlt(_localctx, 7);
-      setState(103);
+      setState(121);
       doStat();
       break;
     }
 
     case 8: {
       enterOuterAlt(_localctx, 8);
-      setState(104);
+      setState(122);
       whileStat();
       break;
     }
 
     case 9: {
       enterOuterAlt(_localctx, 9);
-      setState(105);
+      setState(123);
       repeatStat();
       break;
     }
 
     case 10: {
       enterOuterAlt(_localctx, 10);
-      setState(106);
+      setState(124);
       ifStat();
       break;
     }
 
     case 11: {
       enterOuterAlt(_localctx, 11);
-      setState(107);
+      setState(125);
       forStat();
       break;
     }
 
     case 12: {
       enterOuterAlt(_localctx, 12);
-      setState(108);
+      setState(126);
       forInStat();
       break;
     }
 
     case 13: {
       enterOuterAlt(_localctx, 13);
-      setState(109);
+      setState(127);
       funcStat();
       break;
     }
 
     case 14: {
       enterOuterAlt(_localctx, 14);
-      setState(110);
+      setState(128);
       localFuncStat();
       break;
     }
 
     case 15: {
       enterOuterAlt(_localctx, 15);
-      setState(111);
+      setState(129);
       localVarDecl();
       break;
     }
 
+    default:
+      break;
     }
    
   }
@@ -409,7 +673,8 @@ size_t LuaParser::VarDeclContext::getRuleIndex() const {
   return LuaParser::RuleVarDecl;
 }
 
-antlrcpp::Any LuaParser::VarDeclContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::VarDeclContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitVarDecl(this);
   else
@@ -420,27 +685,33 @@ LuaParser::VarDeclContext* LuaParser::varDecl() {
   VarDeclContext *_localctx = _tracker.createInstance<VarDeclContext>(_ctx, getState());
   enterRule(_localctx, 6, LuaParser::RuleVarDecl);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(114);
+    setState(132);
     varlist();
-    setState(115);
+    setState(133);
     match(LuaParser::EQL);
-    setState(116);
+    setState(134);
     explist();
-    setState(118);
+    setState(136);
     _errHandler->sync(this);
 
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 4, _ctx)) {
     case 1: {
-      setState(117);
+      setState(135);
       match(LuaParser::SEMI);
       break;
     }
 
+    default:
+      break;
     }
    
   }
@@ -480,7 +751,8 @@ size_t LuaParser::FunctioncallContext::getRuleIndex() const {
   return LuaParser::RuleFunctioncall;
 }
 
-antlrcpp::Any LuaParser::FunctioncallContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::FunctioncallContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitFunctioncall(this);
   else
@@ -491,21 +763,25 @@ LuaParser::FunctioncallContext* LuaParser::functioncall() {
   FunctioncallContext *_localctx = _tracker.createInstance<FunctioncallContext>(_ctx, getState());
   enterRule(_localctx, 8, LuaParser::RuleFunctioncall);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(120);
+    setState(138);
     varOrExp();
-    setState(122); 
+    setState(140); 
     _errHandler->sync(this);
     alt = 1;
     do {
       switch (alt) {
         case 1: {
-              setState(121);
+              setState(139);
               nameAndArgs();
               break;
             }
@@ -513,20 +789,22 @@ LuaParser::FunctioncallContext* LuaParser::functioncall() {
       default:
         throw NoViableAltException(this);
       }
-      setState(124); 
+      setState(142); 
       _errHandler->sync(this);
       alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 5, _ctx);
     } while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER);
-    setState(127);
+    setState(145);
     _errHandler->sync(this);
 
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 6, _ctx)) {
     case 1: {
-      setState(126);
+      setState(144);
       match(LuaParser::SEMI);
       break;
     }
 
+    default:
+      break;
     }
    
   }
@@ -558,7 +836,8 @@ size_t LuaParser::GotoStatContext::getRuleIndex() const {
   return LuaParser::RuleGotoStat;
 }
 
-antlrcpp::Any LuaParser::GotoStatContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::GotoStatContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitGotoStat(this);
   else
@@ -569,14 +848,18 @@ LuaParser::GotoStatContext* LuaParser::gotoStat() {
   GotoStatContext *_localctx = _tracker.createInstance<GotoStatContext>(_ctx, getState());
   enterRule(_localctx, 10, LuaParser::RuleGotoStat);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(129);
+    setState(147);
     match(LuaParser::GOTO);
-    setState(130);
+    setState(148);
     match(LuaParser::NAME);
    
   }
@@ -612,7 +895,8 @@ size_t LuaParser::DoStatContext::getRuleIndex() const {
   return LuaParser::RuleDoStat;
 }
 
-antlrcpp::Any LuaParser::DoStatContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::DoStatContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitDoStat(this);
   else
@@ -623,16 +907,20 @@ LuaParser::DoStatContext* LuaParser::doStat() {
   DoStatContext *_localctx = _tracker.createInstance<DoStatContext>(_ctx, getState());
   enterRule(_localctx, 12, LuaParser::RuleDoStat);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(132);
+    setState(150);
     match(LuaParser::DO);
-    setState(133);
+    setState(151);
     block();
-    setState(134);
+    setState(152);
     match(LuaParser::END);
    
   }
@@ -676,7 +964,8 @@ size_t LuaParser::WhileStatContext::getRuleIndex() const {
   return LuaParser::RuleWhileStat;
 }
 
-antlrcpp::Any LuaParser::WhileStatContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::WhileStatContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitWhileStat(this);
   else
@@ -687,20 +976,24 @@ LuaParser::WhileStatContext* LuaParser::whileStat() {
   WhileStatContext *_localctx = _tracker.createInstance<WhileStatContext>(_ctx, getState());
   enterRule(_localctx, 14, LuaParser::RuleWhileStat);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(136);
+    setState(154);
     match(LuaParser::WHILE);
-    setState(137);
+    setState(155);
     exp(0);
-    setState(138);
+    setState(156);
     match(LuaParser::DO);
-    setState(139);
+    setState(157);
     block();
-    setState(140);
+    setState(158);
     match(LuaParser::END);
    
   }
@@ -744,7 +1037,8 @@ size_t LuaParser::RepeatStatContext::getRuleIndex() const {
   return LuaParser::RuleRepeatStat;
 }
 
-antlrcpp::Any LuaParser::RepeatStatContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::RepeatStatContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitRepeatStat(this);
   else
@@ -755,29 +1049,35 @@ LuaParser::RepeatStatContext* LuaParser::repeatStat() {
   RepeatStatContext *_localctx = _tracker.createInstance<RepeatStatContext>(_ctx, getState());
   enterRule(_localctx, 16, LuaParser::RuleRepeatStat);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(142);
+    setState(160);
     match(LuaParser::REPEAT);
-    setState(143);
+    setState(161);
     block();
-    setState(144);
+    setState(162);
     match(LuaParser::UNTIL);
-    setState(145);
+    setState(163);
     exp(0);
-    setState(147);
+    setState(165);
     _errHandler->sync(this);
 
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 7, _ctx)) {
     case 1: {
-      setState(146);
+      setState(164);
       match(LuaParser::SEMI);
       break;
     }
 
+    default:
+      break;
     }
    
   }
@@ -845,7 +1145,8 @@ size_t LuaParser::IfStatContext::getRuleIndex() const {
   return LuaParser::RuleIfStat;
 }
 
-antlrcpp::Any LuaParser::IfStatContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::IfStatContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitIfStat(this);
   else
@@ -857,46 +1158,50 @@ LuaParser::IfStatContext* LuaParser::ifStat() {
   enterRule(_localctx, 18, LuaParser::RuleIfStat);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(149);
+    setState(167);
     match(LuaParser::IF);
-    setState(150);
+    setState(168);
     exp(0);
-    setState(151);
+    setState(169);
     match(LuaParser::THEN);
-    setState(152);
+    setState(170);
     block();
-    setState(160);
+    setState(178);
     _errHandler->sync(this);
     _la = _input->LA(1);
     while (_la == LuaParser::ELSEIF) {
-      setState(153);
+      setState(171);
       match(LuaParser::ELSEIF);
-      setState(154);
+      setState(172);
       exp(0);
-      setState(155);
+      setState(173);
       match(LuaParser::THEN);
-      setState(156);
+      setState(174);
       block();
-      setState(162);
+      setState(180);
       _errHandler->sync(this);
       _la = _input->LA(1);
     }
-    setState(165);
+    setState(183);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == LuaParser::ELSE) {
-      setState(163);
+      setState(181);
       match(LuaParser::ELSE);
-      setState(164);
+      setState(182);
       block();
     }
-    setState(167);
+    setState(185);
     match(LuaParser::END);
    
   }
@@ -960,7 +1265,8 @@ size_t LuaParser::ForStatContext::getRuleIndex() const {
   return LuaParser::RuleForStat;
 }
 
-antlrcpp::Any LuaParser::ForStatContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::ForStatContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitForStat(this);
   else
@@ -972,38 +1278,42 @@ LuaParser::ForStatContext* LuaParser::forStat() {
   enterRule(_localctx, 20, LuaParser::RuleForStat);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(169);
+    setState(187);
     match(LuaParser::FOR);
-    setState(170);
+    setState(188);
     match(LuaParser::NAME);
-    setState(171);
+    setState(189);
     match(LuaParser::EQL);
-    setState(172);
+    setState(190);
     exp(0);
-    setState(173);
+    setState(191);
     match(LuaParser::COMMA);
-    setState(174);
+    setState(192);
     exp(0);
-    setState(177);
+    setState(195);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == LuaParser::COMMA) {
-      setState(175);
+      setState(193);
       match(LuaParser::COMMA);
-      setState(176);
+      setState(194);
       exp(0);
     }
-    setState(179);
+    setState(197);
     match(LuaParser::DO);
-    setState(180);
+    setState(198);
     block();
-    setState(181);
+    setState(199);
     match(LuaParser::END);
    
   }
@@ -1055,7 +1365,8 @@ size_t LuaParser::ForInStatContext::getRuleIndex() const {
   return LuaParser::RuleForInStat;
 }
 
-antlrcpp::Any LuaParser::ForInStatContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::ForInStatContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitForInStat(this);
   else
@@ -1066,24 +1377,28 @@ LuaParser::ForInStatContext* LuaParser::forInStat() {
   ForInStatContext *_localctx = _tracker.createInstance<ForInStatContext>(_ctx, getState());
   enterRule(_localctx, 22, LuaParser::RuleForInStat);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(183);
+    setState(201);
     match(LuaParser::FOR);
-    setState(184);
+    setState(202);
     namelist();
-    setState(185);
+    setState(203);
     match(LuaParser::IN);
-    setState(186);
+    setState(204);
     explist();
-    setState(187);
+    setState(205);
     match(LuaParser::DO);
-    setState(188);
+    setState(206);
     block();
-    setState(189);
+    setState(207);
     match(LuaParser::END);
    
   }
@@ -1119,7 +1434,8 @@ size_t LuaParser::FuncStatContext::getRuleIndex() const {
   return LuaParser::RuleFuncStat;
 }
 
-antlrcpp::Any LuaParser::FuncStatContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::FuncStatContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitFuncStat(this);
   else
@@ -1130,16 +1446,20 @@ LuaParser::FuncStatContext* LuaParser::funcStat() {
   FuncStatContext *_localctx = _tracker.createInstance<FuncStatContext>(_ctx, getState());
   enterRule(_localctx, 24, LuaParser::RuleFuncStat);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(191);
+    setState(209);
     match(LuaParser::FUNCTION);
-    setState(192);
+    setState(210);
     funcname();
-    setState(193);
+    setState(211);
     funcbody();
    
   }
@@ -1179,7 +1499,8 @@ size_t LuaParser::LocalFuncStatContext::getRuleIndex() const {
   return LuaParser::RuleLocalFuncStat;
 }
 
-antlrcpp::Any LuaParser::LocalFuncStatContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::LocalFuncStatContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitLocalFuncStat(this);
   else
@@ -1190,18 +1511,22 @@ LuaParser::LocalFuncStatContext* LuaParser::localFuncStat() {
   LocalFuncStatContext *_localctx = _tracker.createInstance<LocalFuncStatContext>(_ctx, getState());
   enterRule(_localctx, 26, LuaParser::RuleLocalFuncStat);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(195);
+    setState(213);
     match(LuaParser::LOCAL);
-    setState(196);
+    setState(214);
     match(LuaParser::FUNCTION);
-    setState(197);
+    setState(215);
     match(LuaParser::NAME);
-    setState(198);
+    setState(216);
     funcbody();
    
   }
@@ -1245,7 +1570,8 @@ size_t LuaParser::LocalVarDeclContext::getRuleIndex() const {
   return LuaParser::RuleLocalVarDecl;
 }
 
-antlrcpp::Any LuaParser::LocalVarDeclContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::LocalVarDeclContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitLocalVarDecl(this);
   else
@@ -1257,35 +1583,41 @@ LuaParser::LocalVarDeclContext* LuaParser::localVarDecl() {
   enterRule(_localctx, 28, LuaParser::RuleLocalVarDecl);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(200);
+    setState(218);
     match(LuaParser::LOCAL);
-    setState(201);
+    setState(219);
     attnamelist();
-    setState(204);
+    setState(222);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == LuaParser::EQL) {
-      setState(202);
+      setState(220);
       match(LuaParser::EQL);
-      setState(203);
+      setState(221);
       explist();
     }
-    setState(207);
+    setState(225);
     _errHandler->sync(this);
 
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 12, _ctx)) {
     case 1: {
-      setState(206);
+      setState(224);
       match(LuaParser::SEMI);
       break;
     }
 
+    default:
+      break;
     }
    
   }
@@ -1321,7 +1653,8 @@ size_t LuaParser::RetstatContext::getRuleIndex() const {
   return LuaParser::RuleRetstat;
 }
 
-antlrcpp::Any LuaParser::RetstatContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::RetstatContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitRetstat(this);
   else
@@ -1333,46 +1666,32 @@ LuaParser::RetstatContext* LuaParser::retstat() {
   enterRule(_localctx, 30, LuaParser::RuleRetstat);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(209);
+    setState(227);
     match(LuaParser::RETURN);
-    setState(211);
+    setState(229);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << LuaParser::T__8)
-      | (1ULL << LuaParser::T__15)
-      | (1ULL << LuaParser::T__19)
-      | (1ULL << LuaParser::T__20)
-      | (1ULL << LuaParser::FUNCTION)
-      | (1ULL << LuaParser::TRUE)
-      | (1ULL << LuaParser::FALSE)
-      | (1ULL << LuaParser::NIL)
-      | (1ULL << LuaParser::ELLIPSIS)
-      | (1ULL << LuaParser::LP)
-      | (1ULL << LuaParser::LB)
-      | (1ULL << LuaParser::NAME)
-      | (1ULL << LuaParser::NORMALSTRING)
-      | (1ULL << LuaParser::CHARSTRING)
-      | (1ULL << LuaParser::LONGSTRING)
-      | (1ULL << LuaParser::INT)
-      | (1ULL << LuaParser::HEX)
-      | (1ULL << LuaParser::FLOAT)
-      | (1ULL << LuaParser::HEX_FLOAT))) != 0)) {
-      setState(210);
+      ((1ULL << _la) & -66287356774645248) != 0)) {
+      setState(228);
       explist();
     }
-    setState(214);
+    setState(232);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == LuaParser::SEMI) {
-      setState(213);
+      setState(231);
       match(LuaParser::SEMI);
     }
    
@@ -1409,7 +1728,8 @@ size_t LuaParser::LabelContext::getRuleIndex() const {
   return LuaParser::RuleLabel;
 }
 
-antlrcpp::Any LuaParser::LabelContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::LabelContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitLabel(this);
   else
@@ -1420,16 +1740,20 @@ LuaParser::LabelContext* LuaParser::label() {
   LabelContext *_localctx = _tracker.createInstance<LabelContext>(_ctx, getState());
   enterRule(_localctx, 32, LuaParser::RuleLabel);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(216);
+    setState(234);
     match(LuaParser::DCOLON);
-    setState(217);
+    setState(235);
     match(LuaParser::NAME);
-    setState(218);
+    setState(236);
     match(LuaParser::DCOLON);
    
   }
@@ -1473,7 +1797,8 @@ size_t LuaParser::FuncnameContext::getRuleIndex() const {
   return LuaParser::RuleFuncname;
 }
 
-antlrcpp::Any LuaParser::FuncnameContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::FuncnameContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitFuncname(this);
   else
@@ -1485,33 +1810,37 @@ LuaParser::FuncnameContext* LuaParser::funcname() {
   enterRule(_localctx, 34, LuaParser::RuleFuncname);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(220);
+    setState(238);
     match(LuaParser::NAME);
-    setState(225);
+    setState(243);
     _errHandler->sync(this);
     _la = _input->LA(1);
     while (_la == LuaParser::DOT) {
-      setState(221);
+      setState(239);
       match(LuaParser::DOT);
-      setState(222);
+      setState(240);
       match(LuaParser::NAME);
-      setState(227);
+      setState(245);
       _errHandler->sync(this);
       _la = _input->LA(1);
     }
-    setState(230);
+    setState(248);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == LuaParser::COLON) {
-      setState(228);
+      setState(246);
       match(LuaParser::COLON);
-      setState(229);
+      setState(247);
       match(LuaParser::NAME);
     }
    
@@ -1552,7 +1881,8 @@ size_t LuaParser::VarlistContext::getRuleIndex() const {
   return LuaParser::RuleVarlist;
 }
 
-antlrcpp::Any LuaParser::VarlistContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::VarlistContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitVarlist(this);
   else
@@ -1564,22 +1894,26 @@ LuaParser::VarlistContext* LuaParser::varlist() {
   enterRule(_localctx, 36, LuaParser::RuleVarlist);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(232);
+    setState(250);
     var();
-    setState(237);
+    setState(255);
     _errHandler->sync(this);
     _la = _input->LA(1);
     while (_la == LuaParser::COMMA) {
-      setState(233);
+      setState(251);
       match(LuaParser::COMMA);
-      setState(234);
+      setState(252);
       var();
-      setState(239);
+      setState(257);
       _errHandler->sync(this);
       _la = _input->LA(1);
     }
@@ -1621,7 +1955,8 @@ size_t LuaParser::NamelistContext::getRuleIndex() const {
   return LuaParser::RuleNamelist;
 }
 
-antlrcpp::Any LuaParser::NamelistContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::NamelistContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitNamelist(this);
   else
@@ -1632,25 +1967,29 @@ LuaParser::NamelistContext* LuaParser::namelist() {
   NamelistContext *_localctx = _tracker.createInstance<NamelistContext>(_ctx, getState());
   enterRule(_localctx, 38, LuaParser::RuleNamelist);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(240);
+    setState(258);
     match(LuaParser::NAME);
-    setState(245);
+    setState(263);
     _errHandler->sync(this);
     alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 18, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
-        setState(241);
+        setState(259);
         match(LuaParser::COMMA);
-        setState(242);
+        setState(260);
         match(LuaParser::NAME); 
       }
-      setState(247);
+      setState(265);
       _errHandler->sync(this);
       alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 18, _ctx);
     }
@@ -1692,7 +2031,8 @@ size_t LuaParser::AttnamelistContext::getRuleIndex() const {
   return LuaParser::RuleAttnamelist;
 }
 
-antlrcpp::Any LuaParser::AttnamelistContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::AttnamelistContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitAttnamelist(this);
   else
@@ -1704,22 +2044,26 @@ LuaParser::AttnamelistContext* LuaParser::attnamelist() {
   enterRule(_localctx, 40, LuaParser::RuleAttnamelist);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(248);
+    setState(266);
     nameattrib();
-    setState(253);
+    setState(271);
     _errHandler->sync(this);
     _la = _input->LA(1);
     while (_la == LuaParser::COMMA) {
-      setState(249);
+      setState(267);
       match(LuaParser::COMMA);
-      setState(250);
+      setState(268);
       nameattrib();
-      setState(255);
+      setState(273);
       _errHandler->sync(this);
       _la = _input->LA(1);
     }
@@ -1761,7 +2105,8 @@ size_t LuaParser::NameattribContext::getRuleIndex() const {
   return LuaParser::RuleNameattrib;
 }
 
-antlrcpp::Any LuaParser::NameattribContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::NameattribContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitNameattrib(this);
   else
@@ -1773,23 +2118,27 @@ LuaParser::NameattribContext* LuaParser::nameattrib() {
   enterRule(_localctx, 42, LuaParser::RuleNameattrib);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(256);
+    setState(274);
     match(LuaParser::NAME);
-    setState(260);
+    setState(278);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == LuaParser::LT) {
-      setState(257);
+      setState(275);
       match(LuaParser::LT);
-      setState(258);
+      setState(276);
       match(LuaParser::NAME);
-      setState(259);
+      setState(277);
       match(LuaParser::GT);
     }
    
@@ -1830,7 +2179,8 @@ size_t LuaParser::ExplistContext::getRuleIndex() const {
   return LuaParser::RuleExplist;
 }
 
-antlrcpp::Any LuaParser::ExplistContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::ExplistContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitExplist(this);
   else
@@ -1842,22 +2192,26 @@ LuaParser::ExplistContext* LuaParser::explist() {
   enterRule(_localctx, 44, LuaParser::RuleExplist);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(262);
+    setState(280);
     exp(0);
-    setState(267);
+    setState(285);
     _errHandler->sync(this);
     _la = _input->LA(1);
     while (_la == LuaParser::COMMA) {
-      setState(263);
+      setState(281);
       match(LuaParser::COMMA);
-      setState(264);
+      setState(282);
       exp(0);
-      setState(269);
+      setState(287);
       _errHandler->sync(this);
       _la = _input->LA(1);
     }
@@ -1914,6 +2268,10 @@ LuaParser::TableconstructorContext* LuaParser::ExpContext::tableconstructor() {
   return getRuleContext<LuaParser::TableconstructorContext>(0);
 }
 
+LuaParser::LongStringContext* LuaParser::ExpContext::longString() {
+  return getRuleContext<LuaParser::LongStringContext>(0);
+}
+
 LuaParser::UnaryOperatorContext* LuaParser::ExpContext::unaryOperator() {
   return getRuleContext<LuaParser::UnaryOperatorContext>(0);
 }
@@ -1926,8 +2284,36 @@ LuaParser::ExpContext* LuaParser::ExpContext::exp(size_t i) {
   return getRuleContext<LuaParser::ExpContext>(i);
 }
 
-LuaParser::LinkOperatorContext* LuaParser::ExpContext::linkOperator() {
-  return getRuleContext<LuaParser::LinkOperatorContext>(0);
+LuaParser::OperatorPowerContext* LuaParser::ExpContext::operatorPower() {
+  return getRuleContext<LuaParser::OperatorPowerContext>(0);
+}
+
+LuaParser::OperatorMulDivModContext* LuaParser::ExpContext::operatorMulDivMod() {
+  return getRuleContext<LuaParser::OperatorMulDivModContext>(0);
+}
+
+LuaParser::OperatorAddSubContext* LuaParser::ExpContext::operatorAddSub() {
+  return getRuleContext<LuaParser::OperatorAddSubContext>(0);
+}
+
+LuaParser::OperatorStrcatContext* LuaParser::ExpContext::operatorStrcat() {
+  return getRuleContext<LuaParser::OperatorStrcatContext>(0);
+}
+
+LuaParser::OperatorComparisonContext* LuaParser::ExpContext::operatorComparison() {
+  return getRuleContext<LuaParser::OperatorComparisonContext>(0);
+}
+
+LuaParser::OperatorAndContext* LuaParser::ExpContext::operatorAnd() {
+  return getRuleContext<LuaParser::OperatorAndContext>(0);
+}
+
+LuaParser::OperatorOrContext* LuaParser::ExpContext::operatorOr() {
+  return getRuleContext<LuaParser::OperatorOrContext>(0);
+}
+
+LuaParser::OperatorBitwiseContext* LuaParser::ExpContext::operatorBitwise() {
+  return getRuleContext<LuaParser::OperatorBitwiseContext>(0);
 }
 
 
@@ -1935,7 +2321,8 @@ size_t LuaParser::ExpContext::getRuleIndex() const {
   return LuaParser::RuleExp;
 }
 
-antlrcpp::Any LuaParser::ExpContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::ExpContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitExp(this);
   else
@@ -1952,116 +2339,219 @@ LuaParser::ExpContext* LuaParser::exp(int precedence) {
   size_t parentState = getState();
   LuaParser::ExpContext *_localctx = _tracker.createInstance<ExpContext>(_ctx, parentState);
   LuaParser::ExpContext *previousContext = _localctx;
+  (void)previousContext; // Silence compiler, in case the context is not used by generated code.
   size_t startState = 46;
   enterRecursionRule(_localctx, 46, LuaParser::RuleExp, precedence);
 
     
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     unrollRecursionContexts(parentContext);
   });
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(283);
+    setState(302);
     _errHandler->sync(this);
-    switch (_input->LA(1)) {
-      case LuaParser::NIL: {
-        setState(271);
-        match(LuaParser::NIL);
-        break;
-      }
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 22, _ctx)) {
+    case 1: {
+      setState(289);
+      match(LuaParser::NIL);
+      break;
+    }
 
-      case LuaParser::FALSE: {
-        setState(272);
-        match(LuaParser::FALSE);
-        break;
-      }
+    case 2: {
+      setState(290);
+      match(LuaParser::FALSE);
+      break;
+    }
 
-      case LuaParser::TRUE: {
-        setState(273);
-        match(LuaParser::TRUE);
-        break;
-      }
+    case 3: {
+      setState(291);
+      match(LuaParser::TRUE);
+      break;
+    }
 
-      case LuaParser::INT:
-      case LuaParser::HEX:
-      case LuaParser::FLOAT:
-      case LuaParser::HEX_FLOAT: {
-        setState(274);
-        number();
-        break;
-      }
+    case 4: {
+      setState(292);
+      number();
+      break;
+    }
 
-      case LuaParser::NORMALSTRING:
-      case LuaParser::CHARSTRING:
-      case LuaParser::LONGSTRING: {
-        setState(275);
-        string();
-        break;
-      }
+    case 5: {
+      setState(293);
+      string();
+      break;
+    }
 
-      case LuaParser::ELLIPSIS: {
-        setState(276);
-        match(LuaParser::ELLIPSIS);
-        break;
-      }
+    case 6: {
+      setState(294);
+      match(LuaParser::ELLIPSIS);
+      break;
+    }
 
-      case LuaParser::LP:
-      case LuaParser::NAME: {
-        setState(277);
-        prefixexp();
-        break;
-      }
+    case 7: {
+      setState(295);
+      prefixexp();
+      break;
+    }
 
-      case LuaParser::FUNCTION: {
-        setState(278);
-        functiondef();
-        break;
-      }
+    case 8: {
+      setState(296);
+      functiondef();
+      break;
+    }
 
-      case LuaParser::LB: {
-        setState(279);
-        tableconstructor();
-        break;
-      }
+    case 9: {
+      setState(297);
+      tableconstructor();
+      break;
+    }
 
-      case LuaParser::T__8:
-      case LuaParser::T__15:
-      case LuaParser::T__19:
-      case LuaParser::T__20: {
-        setState(280);
-        unaryOperator();
-        setState(281);
-        exp(2);
-        break;
-      }
+    case 10: {
+      setState(298);
+      longString();
+      break;
+    }
+
+    case 11: {
+      setState(299);
+      unaryOperator();
+      setState(300);
+      exp(8);
+      break;
+    }
 
     default:
-      throw NoViableAltException(this);
+      break;
     }
     _ctx->stop = _input->LT(-1);
-    setState(291);
+    setState(338);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 23, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 24, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
         if (!_parseListeners.empty())
           triggerExitRuleEvent();
         previousContext = _localctx;
-        _localctx = _tracker.createInstance<ExpContext>(parentContext, parentState);
-        pushNewRecursionContext(_localctx, startState, RuleExp);
-        setState(285);
+        setState(336);
+        _errHandler->sync(this);
+        switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 23, _ctx)) {
+        case 1: {
+          _localctx = _tracker.createInstance<ExpContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleExp);
+          setState(304);
 
-        if (!(precpred(_ctx, 1))) throw FailedPredicateException(this, "precpred(_ctx, 1)");
-        setState(286);
-        linkOperator();
-        setState(287);
-        exp(2); 
+          if (!(precpred(_ctx, 9))) throw FailedPredicateException(this, "precpred(_ctx, 9)");
+          setState(305);
+          operatorPower();
+          setState(306);
+          exp(9);
+          break;
+        }
+
+        case 2: {
+          _localctx = _tracker.createInstance<ExpContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleExp);
+          setState(308);
+
+          if (!(precpred(_ctx, 7))) throw FailedPredicateException(this, "precpred(_ctx, 7)");
+          setState(309);
+          operatorMulDivMod();
+          setState(310);
+          exp(8);
+          break;
+        }
+
+        case 3: {
+          _localctx = _tracker.createInstance<ExpContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleExp);
+          setState(312);
+
+          if (!(precpred(_ctx, 6))) throw FailedPredicateException(this, "precpred(_ctx, 6)");
+          setState(313);
+          operatorAddSub();
+          setState(314);
+          exp(7);
+          break;
+        }
+
+        case 4: {
+          _localctx = _tracker.createInstance<ExpContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleExp);
+          setState(316);
+
+          if (!(precpred(_ctx, 5))) throw FailedPredicateException(this, "precpred(_ctx, 5)");
+          setState(317);
+          operatorStrcat();
+          setState(318);
+          exp(5);
+          break;
+        }
+
+        case 5: {
+          _localctx = _tracker.createInstance<ExpContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleExp);
+          setState(320);
+
+          if (!(precpred(_ctx, 4))) throw FailedPredicateException(this, "precpred(_ctx, 4)");
+          setState(321);
+          operatorComparison();
+          setState(322);
+          exp(5);
+          break;
+        }
+
+        case 6: {
+          _localctx = _tracker.createInstance<ExpContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleExp);
+          setState(324);
+
+          if (!(precpred(_ctx, 3))) throw FailedPredicateException(this, "precpred(_ctx, 3)");
+          setState(325);
+          operatorAnd();
+          setState(326);
+          exp(4);
+          break;
+        }
+
+        case 7: {
+          _localctx = _tracker.createInstance<ExpContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleExp);
+          setState(328);
+
+          if (!(precpred(_ctx, 2))) throw FailedPredicateException(this, "precpred(_ctx, 2)");
+          setState(329);
+          operatorOr();
+          setState(330);
+          exp(3);
+          break;
+        }
+
+        case 8: {
+          _localctx = _tracker.createInstance<ExpContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleExp);
+          setState(332);
+
+          if (!(precpred(_ctx, 1))) throw FailedPredicateException(this, "precpred(_ctx, 1)");
+          setState(333);
+          operatorBitwise();
+          setState(334);
+          exp(2);
+          break;
+        }
+
+        default:
+          break;
+        } 
       }
-      setState(293);
+      setState(340);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 23, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 24, _ctx);
     }
   }
   catch (RecognitionException &e) {
@@ -2069,6 +2559,67 @@ LuaParser::ExpContext* LuaParser::exp(int precedence) {
     _localctx->exception = std::current_exception();
     _errHandler->recover(this, _localctx->exception);
   }
+  return _localctx;
+}
+
+//----------------- LongStringContext ------------------------------------------------------------------
+
+LuaParser::LongStringContext::LongStringContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+std::vector<LuaParser::StringContext *> LuaParser::LongStringContext::string() {
+  return getRuleContexts<LuaParser::StringContext>();
+}
+
+LuaParser::StringContext* LuaParser::LongStringContext::string(size_t i) {
+  return getRuleContext<LuaParser::StringContext>(i);
+}
+
+LuaParser::OperatorStrcatContext* LuaParser::LongStringContext::operatorStrcat() {
+  return getRuleContext<LuaParser::OperatorStrcatContext>(0);
+}
+
+
+size_t LuaParser::LongStringContext::getRuleIndex() const {
+  return LuaParser::RuleLongString;
+}
+
+
+std::any LuaParser::LongStringContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
+    return parserVisitor->visitLongString(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+LuaParser::LongStringContext* LuaParser::longString() {
+  LongStringContext *_localctx = _tracker.createInstance<LongStringContext>(_ctx, getState());
+  enterRule(_localctx, 48, LuaParser::RuleLongString);
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    enterOuterAlt(_localctx, 1);
+    setState(341);
+    string();
+    setState(342);
+    operatorStrcat();
+    setState(343);
+    string();
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
   return _localctx;
 }
 
@@ -2095,7 +2646,8 @@ size_t LuaParser::PrefixexpContext::getRuleIndex() const {
   return LuaParser::RulePrefixexp;
 }
 
-antlrcpp::Any LuaParser::PrefixexpContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::PrefixexpContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitPrefixexp(this);
   else
@@ -2104,27 +2656,31 @@ antlrcpp::Any LuaParser::PrefixexpContext::accept(tree::ParseTreeVisitor *visito
 
 LuaParser::PrefixexpContext* LuaParser::prefixexp() {
   PrefixexpContext *_localctx = _tracker.createInstance<PrefixexpContext>(_ctx, getState());
-  enterRule(_localctx, 48, LuaParser::RulePrefixexp);
+  enterRule(_localctx, 50, LuaParser::RulePrefixexp);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(294);
+    setState(345);
     varOrExp();
-    setState(298);
+    setState(349);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 24, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 25, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
-        setState(295);
+        setState(346);
         nameAndArgs(); 
       }
-      setState(300);
+      setState(351);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 24, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 25, _ctx);
     }
    
   }
@@ -2164,7 +2720,8 @@ size_t LuaParser::VarOrExpContext::getRuleIndex() const {
   return LuaParser::RuleVarOrExp;
 }
 
-antlrcpp::Any LuaParser::VarOrExpContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::VarOrExpContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitVarOrExp(this);
   else
@@ -2173,33 +2730,39 @@ antlrcpp::Any LuaParser::VarOrExpContext::accept(tree::ParseTreeVisitor *visitor
 
 LuaParser::VarOrExpContext* LuaParser::varOrExp() {
   VarOrExpContext *_localctx = _tracker.createInstance<VarOrExpContext>(_ctx, getState());
-  enterRule(_localctx, 50, LuaParser::RuleVarOrExp);
+  enterRule(_localctx, 52, LuaParser::RuleVarOrExp);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
-    setState(306);
+    setState(357);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 25, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 26, _ctx)) {
     case 1: {
       enterOuterAlt(_localctx, 1);
-      setState(301);
+      setState(352);
       var();
       break;
     }
 
     case 2: {
       enterOuterAlt(_localctx, 2);
-      setState(302);
+      setState(353);
       match(LuaParser::LP);
-      setState(303);
+      setState(354);
       exp(0);
-      setState(304);
+      setState(355);
       match(LuaParser::RP);
       break;
     }
 
+    default:
+      break;
     }
    
   }
@@ -2247,7 +2810,8 @@ size_t LuaParser::VarContext::getRuleIndex() const {
   return LuaParser::RuleVar;
 }
 
-antlrcpp::Any LuaParser::VarContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::VarContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitVar(this);
   else
@@ -2256,31 +2820,35 @@ antlrcpp::Any LuaParser::VarContext::accept(tree::ParseTreeVisitor *visitor) {
 
 LuaParser::VarContext* LuaParser::var() {
   VarContext *_localctx = _tracker.createInstance<VarContext>(_ctx, getState());
-  enterRule(_localctx, 52, LuaParser::RuleVar);
+  enterRule(_localctx, 54, LuaParser::RuleVar);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(314);
+    setState(365);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
       case LuaParser::NAME: {
-        setState(308);
+        setState(359);
         match(LuaParser::NAME);
         break;
       }
 
       case LuaParser::LP: {
-        setState(309);
+        setState(360);
         match(LuaParser::LP);
-        setState(310);
+        setState(361);
         exp(0);
-        setState(311);
+        setState(362);
         match(LuaParser::RP);
-        setState(312);
+        setState(363);
         varSuffix();
         break;
       }
@@ -2288,17 +2856,17 @@ LuaParser::VarContext* LuaParser::var() {
     default:
       throw NoViableAltException(this);
     }
-    setState(319);
+    setState(370);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 27, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 28, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
-        setState(316);
+        setState(367);
         varSuffix(); 
       }
-      setState(321);
+      setState(372);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 27, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 28, _ctx);
     }
    
   }
@@ -2350,7 +2918,8 @@ size_t LuaParser::VarSuffixContext::getRuleIndex() const {
   return LuaParser::RuleVarSuffix;
 }
 
-antlrcpp::Any LuaParser::VarSuffixContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::VarSuffixContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitVarSuffix(this);
   else
@@ -2359,47 +2928,46 @@ antlrcpp::Any LuaParser::VarSuffixContext::accept(tree::ParseTreeVisitor *visito
 
 LuaParser::VarSuffixContext* LuaParser::varSuffix() {
   VarSuffixContext *_localctx = _tracker.createInstance<VarSuffixContext>(_ctx, getState());
-  enterRule(_localctx, 54, LuaParser::RuleVarSuffix);
+  enterRule(_localctx, 56, LuaParser::RuleVarSuffix);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(325);
+    setState(376);
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << LuaParser::COLON)
-      | (1ULL << LuaParser::LP)
-      | (1ULL << LuaParser::LB)
-      | (1ULL << LuaParser::NORMALSTRING)
-      | (1ULL << LuaParser::CHARSTRING)
-      | (1ULL << LuaParser::LONGSTRING))) != 0)) {
-      setState(322);
+      ((1ULL << _la) & 1014471000437293056) != 0)) {
+      setState(373);
       nameAndArgs();
-      setState(327);
+      setState(378);
       _errHandler->sync(this);
       _la = _input->LA(1);
     }
-    setState(334);
+    setState(385);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
       case LuaParser::LSB: {
-        setState(328);
+        setState(379);
         match(LuaParser::LSB);
-        setState(329);
+        setState(380);
         exp(0);
-        setState(330);
+        setState(381);
         match(LuaParser::RSB);
         break;
       }
 
       case LuaParser::DOT: {
-        setState(332);
+        setState(383);
         match(LuaParser::DOT);
-        setState(333);
+        setState(384);
         match(LuaParser::NAME);
         break;
       }
@@ -2441,7 +3009,8 @@ size_t LuaParser::NameAndArgsContext::getRuleIndex() const {
   return LuaParser::RuleNameAndArgs;
 }
 
-antlrcpp::Any LuaParser::NameAndArgsContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::NameAndArgsContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitNameAndArgs(this);
   else
@@ -2450,25 +3019,29 @@ antlrcpp::Any LuaParser::NameAndArgsContext::accept(tree::ParseTreeVisitor *visi
 
 LuaParser::NameAndArgsContext* LuaParser::nameAndArgs() {
   NameAndArgsContext *_localctx = _tracker.createInstance<NameAndArgsContext>(_ctx, getState());
-  enterRule(_localctx, 56, LuaParser::RuleNameAndArgs);
+  enterRule(_localctx, 58, LuaParser::RuleNameAndArgs);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(338);
+    setState(389);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == LuaParser::COLON) {
-      setState(336);
+      setState(387);
       match(LuaParser::COLON);
-      setState(337);
+      setState(388);
       match(LuaParser::NAME);
     }
-    setState(340);
+    setState(391);
     args();
    
   }
@@ -2512,7 +3085,8 @@ size_t LuaParser::ArgsContext::getRuleIndex() const {
   return LuaParser::RuleArgs;
 }
 
-antlrcpp::Any LuaParser::ArgsContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::ArgsContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitArgs(this);
   else
@@ -2521,55 +3095,41 @@ antlrcpp::Any LuaParser::ArgsContext::accept(tree::ParseTreeVisitor *visitor) {
 
 LuaParser::ArgsContext* LuaParser::args() {
   ArgsContext *_localctx = _tracker.createInstance<ArgsContext>(_ctx, getState());
-  enterRule(_localctx, 58, LuaParser::RuleArgs);
+  enterRule(_localctx, 60, LuaParser::RuleArgs);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
-    setState(349);
+    setState(400);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
       case LuaParser::LP: {
         enterOuterAlt(_localctx, 1);
-        setState(342);
+        setState(393);
         match(LuaParser::LP);
-        setState(344);
+        setState(395);
         _errHandler->sync(this);
 
         _la = _input->LA(1);
         if ((((_la & ~ 0x3fULL) == 0) &&
-          ((1ULL << _la) & ((1ULL << LuaParser::T__8)
-          | (1ULL << LuaParser::T__15)
-          | (1ULL << LuaParser::T__19)
-          | (1ULL << LuaParser::T__20)
-          | (1ULL << LuaParser::FUNCTION)
-          | (1ULL << LuaParser::TRUE)
-          | (1ULL << LuaParser::FALSE)
-          | (1ULL << LuaParser::NIL)
-          | (1ULL << LuaParser::ELLIPSIS)
-          | (1ULL << LuaParser::LP)
-          | (1ULL << LuaParser::LB)
-          | (1ULL << LuaParser::NAME)
-          | (1ULL << LuaParser::NORMALSTRING)
-          | (1ULL << LuaParser::CHARSTRING)
-          | (1ULL << LuaParser::LONGSTRING)
-          | (1ULL << LuaParser::INT)
-          | (1ULL << LuaParser::HEX)
-          | (1ULL << LuaParser::FLOAT)
-          | (1ULL << LuaParser::HEX_FLOAT))) != 0)) {
-          setState(343);
+          ((1ULL << _la) & -66287356774645248) != 0)) {
+          setState(394);
           explist();
         }
-        setState(346);
+        setState(397);
         match(LuaParser::RP);
         break;
       }
 
       case LuaParser::LB: {
         enterOuterAlt(_localctx, 2);
-        setState(347);
+        setState(398);
         tableconstructor();
         break;
       }
@@ -2578,7 +3138,7 @@ LuaParser::ArgsContext* LuaParser::args() {
       case LuaParser::CHARSTRING:
       case LuaParser::LONGSTRING: {
         enterOuterAlt(_localctx, 3);
-        setState(348);
+        setState(399);
         string();
         break;
       }
@@ -2616,7 +3176,8 @@ size_t LuaParser::FunctiondefContext::getRuleIndex() const {
   return LuaParser::RuleFunctiondef;
 }
 
-antlrcpp::Any LuaParser::FunctiondefContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::FunctiondefContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitFunctiondef(this);
   else
@@ -2625,16 +3186,20 @@ antlrcpp::Any LuaParser::FunctiondefContext::accept(tree::ParseTreeVisitor *visi
 
 LuaParser::FunctiondefContext* LuaParser::functiondef() {
   FunctiondefContext *_localctx = _tracker.createInstance<FunctiondefContext>(_ctx, getState());
-  enterRule(_localctx, 60, LuaParser::RuleFunctiondef);
+  enterRule(_localctx, 62, LuaParser::RuleFunctiondef);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(351);
+    setState(402);
     match(LuaParser::FUNCTION);
-    setState(352);
+    setState(403);
     funcbody();
    
   }
@@ -2678,7 +3243,8 @@ size_t LuaParser::FuncbodyContext::getRuleIndex() const {
   return LuaParser::RuleFuncbody;
 }
 
-antlrcpp::Any LuaParser::FuncbodyContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::FuncbodyContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitFuncbody(this);
   else
@@ -2687,31 +3253,35 @@ antlrcpp::Any LuaParser::FuncbodyContext::accept(tree::ParseTreeVisitor *visitor
 
 LuaParser::FuncbodyContext* LuaParser::funcbody() {
   FuncbodyContext *_localctx = _tracker.createInstance<FuncbodyContext>(_ctx, getState());
-  enterRule(_localctx, 62, LuaParser::RuleFuncbody);
+  enterRule(_localctx, 64, LuaParser::RuleFuncbody);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(354);
+    setState(405);
     match(LuaParser::LP);
-    setState(356);
+    setState(407);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == LuaParser::ELLIPSIS
 
     || _la == LuaParser::NAME) {
-      setState(355);
+      setState(406);
       parlist();
     }
-    setState(358);
+    setState(409);
     match(LuaParser::RP);
-    setState(359);
+    setState(410);
     block();
-    setState(360);
+    setState(411);
     match(LuaParser::END);
    
   }
@@ -2747,7 +3317,8 @@ size_t LuaParser::ParlistContext::getRuleIndex() const {
   return LuaParser::RuleParlist;
 }
 
-antlrcpp::Any LuaParser::ParlistContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::ParlistContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitParlist(this);
   else
@@ -2756,28 +3327,32 @@ antlrcpp::Any LuaParser::ParlistContext::accept(tree::ParseTreeVisitor *visitor)
 
 LuaParser::ParlistContext* LuaParser::parlist() {
   ParlistContext *_localctx = _tracker.createInstance<ParlistContext>(_ctx, getState());
-  enterRule(_localctx, 64, LuaParser::RuleParlist);
+  enterRule(_localctx, 66, LuaParser::RuleParlist);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
-    setState(368);
+    setState(419);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
       case LuaParser::NAME: {
         enterOuterAlt(_localctx, 1);
-        setState(362);
+        setState(413);
         namelist();
-        setState(365);
+        setState(416);
         _errHandler->sync(this);
 
         _la = _input->LA(1);
         if (_la == LuaParser::COMMA) {
-          setState(363);
+          setState(414);
           match(LuaParser::COMMA);
-          setState(364);
+          setState(415);
           match(LuaParser::ELLIPSIS);
         }
         break;
@@ -2785,7 +3360,7 @@ LuaParser::ParlistContext* LuaParser::parlist() {
 
       case LuaParser::ELLIPSIS: {
         enterOuterAlt(_localctx, 2);
-        setState(367);
+        setState(418);
         match(LuaParser::ELLIPSIS);
         break;
       }
@@ -2827,7 +3402,8 @@ size_t LuaParser::TableconstructorContext::getRuleIndex() const {
   return LuaParser::RuleTableconstructor;
 }
 
-antlrcpp::Any LuaParser::TableconstructorContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::TableconstructorContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitTableconstructor(this);
   else
@@ -2836,45 +3412,30 @@ antlrcpp::Any LuaParser::TableconstructorContext::accept(tree::ParseTreeVisitor 
 
 LuaParser::TableconstructorContext* LuaParser::tableconstructor() {
   TableconstructorContext *_localctx = _tracker.createInstance<TableconstructorContext>(_ctx, getState());
-  enterRule(_localctx, 66, LuaParser::RuleTableconstructor);
+  enterRule(_localctx, 68, LuaParser::RuleTableconstructor);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(370);
+    setState(421);
     match(LuaParser::LB);
-    setState(372);
+    setState(423);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << LuaParser::T__8)
-      | (1ULL << LuaParser::T__15)
-      | (1ULL << LuaParser::T__19)
-      | (1ULL << LuaParser::T__20)
-      | (1ULL << LuaParser::FUNCTION)
-      | (1ULL << LuaParser::TRUE)
-      | (1ULL << LuaParser::FALSE)
-      | (1ULL << LuaParser::NIL)
-      | (1ULL << LuaParser::ELLIPSIS)
-      | (1ULL << LuaParser::LP)
-      | (1ULL << LuaParser::LB)
-      | (1ULL << LuaParser::LSB)
-      | (1ULL << LuaParser::NAME)
-      | (1ULL << LuaParser::NORMALSTRING)
-      | (1ULL << LuaParser::CHARSTRING)
-      | (1ULL << LuaParser::LONGSTRING)
-      | (1ULL << LuaParser::INT)
-      | (1ULL << LuaParser::HEX)
-      | (1ULL << LuaParser::FLOAT)
-      | (1ULL << LuaParser::HEX_FLOAT))) != 0)) {
-      setState(371);
+      ((1ULL << _la) & -48272958265163264) != 0)) {
+      setState(422);
       fieldlist();
     }
-    setState(374);
+    setState(425);
     match(LuaParser::RB);
    
   }
@@ -2914,7 +3475,8 @@ size_t LuaParser::FieldlistContext::getRuleIndex() const {
   return LuaParser::RuleFieldlist;
 }
 
-antlrcpp::Any LuaParser::FieldlistContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::FieldlistContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitFieldlist(this);
   else
@@ -2923,39 +3485,43 @@ antlrcpp::Any LuaParser::FieldlistContext::accept(tree::ParseTreeVisitor *visito
 
 LuaParser::FieldlistContext* LuaParser::fieldlist() {
   FieldlistContext *_localctx = _tracker.createInstance<FieldlistContext>(_ctx, getState());
-  enterRule(_localctx, 68, LuaParser::RuleFieldlist);
+  enterRule(_localctx, 70, LuaParser::RuleFieldlist);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(376);
+    setState(427);
     field();
-    setState(382);
+    setState(433);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 37, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 38, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
-        setState(377);
+        setState(428);
         fieldsep();
-        setState(378);
+        setState(429);
         field(); 
       }
-      setState(384);
+      setState(435);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 37, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 38, _ctx);
     }
-    setState(386);
+    setState(437);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == LuaParser::SEMI
 
     || _la == LuaParser::COMMA) {
-      setState(385);
+      setState(436);
       fieldsep();
     }
    
@@ -3004,7 +3570,8 @@ size_t LuaParser::FieldContext::getRuleIndex() const {
   return LuaParser::RuleField;
 }
 
-antlrcpp::Any LuaParser::FieldContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::FieldContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitField(this);
   else
@@ -3013,48 +3580,54 @@ antlrcpp::Any LuaParser::FieldContext::accept(tree::ParseTreeVisitor *visitor) {
 
 LuaParser::FieldContext* LuaParser::field() {
   FieldContext *_localctx = _tracker.createInstance<FieldContext>(_ctx, getState());
-  enterRule(_localctx, 70, LuaParser::RuleField);
+  enterRule(_localctx, 72, LuaParser::RuleField);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
-    setState(398);
+    setState(449);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 39, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 40, _ctx)) {
     case 1: {
       enterOuterAlt(_localctx, 1);
-      setState(388);
+      setState(439);
       match(LuaParser::LSB);
-      setState(389);
+      setState(440);
       exp(0);
-      setState(390);
+      setState(441);
       match(LuaParser::RSB);
-      setState(391);
+      setState(442);
       match(LuaParser::EQL);
-      setState(392);
+      setState(443);
       exp(0);
       break;
     }
 
     case 2: {
       enterOuterAlt(_localctx, 2);
-      setState(394);
+      setState(445);
       match(LuaParser::NAME);
-      setState(395);
+      setState(446);
       match(LuaParser::EQL);
-      setState(396);
+      setState(447);
       exp(0);
       break;
     }
 
     case 3: {
       enterOuterAlt(_localctx, 3);
-      setState(397);
+      setState(448);
       exp(0);
       break;
     }
 
+    default:
+      break;
     }
    
   }
@@ -3086,7 +3659,8 @@ size_t LuaParser::FieldsepContext::getRuleIndex() const {
   return LuaParser::RuleFieldsep;
 }
 
-antlrcpp::Any LuaParser::FieldsepContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::FieldsepContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitFieldsep(this);
   else
@@ -3095,15 +3669,19 @@ antlrcpp::Any LuaParser::FieldsepContext::accept(tree::ParseTreeVisitor *visitor
 
 LuaParser::FieldsepContext* LuaParser::fieldsep() {
   FieldsepContext *_localctx = _tracker.createInstance<FieldsepContext>(_ctx, getState());
-  enterRule(_localctx, 72, LuaParser::RuleFieldsep);
+  enterRule(_localctx, 74, LuaParser::RuleFieldsep);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(400);
+    setState(451);
     _la = _input->LA(1);
     if (!(_la == LuaParser::SEMI
 
@@ -3125,64 +3703,454 @@ LuaParser::FieldsepContext* LuaParser::fieldsep() {
   return _localctx;
 }
 
-//----------------- LinkOperatorContext ------------------------------------------------------------------
+//----------------- OperatorOrContext ------------------------------------------------------------------
 
-LuaParser::LinkOperatorContext::LinkOperatorContext(ParserRuleContext *parent, size_t invokingState)
+LuaParser::OperatorOrContext::OperatorOrContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
 
-size_t LuaParser::LinkOperatorContext::getRuleIndex() const {
-  return LuaParser::RuleLinkOperator;
+size_t LuaParser::OperatorOrContext::getRuleIndex() const {
+  return LuaParser::RuleOperatorOr;
 }
 
-antlrcpp::Any LuaParser::LinkOperatorContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::OperatorOrContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
-    return parserVisitor->visitLinkOperator(this);
+    return parserVisitor->visitOperatorOr(this);
   else
     return visitor->visitChildren(this);
 }
 
-LuaParser::LinkOperatorContext* LuaParser::linkOperator() {
-  LinkOperatorContext *_localctx = _tracker.createInstance<LinkOperatorContext>(_ctx, getState());
-  enterRule(_localctx, 74, LuaParser::RuleLinkOperator);
-  size_t _la = 0;
+LuaParser::OperatorOrContext* LuaParser::operatorOr() {
+  OperatorOrContext *_localctx = _tracker.createInstance<OperatorOrContext>(_ctx, getState());
+  enterRule(_localctx, 76, LuaParser::RuleOperatorOr);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(402);
+    setState(453);
+    match(LuaParser::T__0);
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- OperatorAndContext ------------------------------------------------------------------
+
+LuaParser::OperatorAndContext::OperatorAndContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+
+size_t LuaParser::OperatorAndContext::getRuleIndex() const {
+  return LuaParser::RuleOperatorAnd;
+}
+
+
+std::any LuaParser::OperatorAndContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
+    return parserVisitor->visitOperatorAnd(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+LuaParser::OperatorAndContext* LuaParser::operatorAnd() {
+  OperatorAndContext *_localctx = _tracker.createInstance<OperatorAndContext>(_ctx, getState());
+  enterRule(_localctx, 78, LuaParser::RuleOperatorAnd);
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    enterOuterAlt(_localctx, 1);
+    setState(455);
+    match(LuaParser::T__1);
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- OperatorComparisonContext ------------------------------------------------------------------
+
+LuaParser::OperatorComparisonContext::OperatorComparisonContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* LuaParser::OperatorComparisonContext::LT() {
+  return getToken(LuaParser::LT, 0);
+}
+
+tree::TerminalNode* LuaParser::OperatorComparisonContext::GT() {
+  return getToken(LuaParser::GT, 0);
+}
+
+
+size_t LuaParser::OperatorComparisonContext::getRuleIndex() const {
+  return LuaParser::RuleOperatorComparison;
+}
+
+
+std::any LuaParser::OperatorComparisonContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
+    return parserVisitor->visitOperatorComparison(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+LuaParser::OperatorComparisonContext* LuaParser::operatorComparison() {
+  OperatorComparisonContext *_localctx = _tracker.createInstance<OperatorComparisonContext>(_ctx, getState());
+  enterRule(_localctx, 80, LuaParser::RuleOperatorComparison);
+  size_t _la = 0;
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    enterOuterAlt(_localctx, 1);
+    setState(457);
     _la = _input->LA(1);
     if (!((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << LuaParser::T__0)
-      | (1ULL << LuaParser::T__1)
-      | (1ULL << LuaParser::T__2)
-      | (1ULL << LuaParser::T__3)
-      | (1ULL << LuaParser::T__4)
-      | (1ULL << LuaParser::T__5)
-      | (1ULL << LuaParser::T__6)
-      | (1ULL << LuaParser::T__7)
-      | (1ULL << LuaParser::T__8)
-      | (1ULL << LuaParser::T__9)
-      | (1ULL << LuaParser::T__10)
-      | (1ULL << LuaParser::T__11)
-      | (1ULL << LuaParser::T__12)
-      | (1ULL << LuaParser::T__13)
-      | (1ULL << LuaParser::T__14)
-      | (1ULL << LuaParser::T__15)
-      | (1ULL << LuaParser::T__16)
-      | (1ULL << LuaParser::T__17)
-      | (1ULL << LuaParser::T__18)
-      | (1ULL << LuaParser::LT)
-      | (1ULL << LuaParser::GT))) != 0))) {
+      ((1ULL << _la) & 844424930132088) != 0))) {
     _errHandler->recoverInline(this);
     }
     else {
       _errHandler->reportMatch(this);
       consume();
     }
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- OperatorStrcatContext ------------------------------------------------------------------
+
+LuaParser::OperatorStrcatContext::OperatorStrcatContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+
+size_t LuaParser::OperatorStrcatContext::getRuleIndex() const {
+  return LuaParser::RuleOperatorStrcat;
+}
+
+
+std::any LuaParser::OperatorStrcatContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
+    return parserVisitor->visitOperatorStrcat(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+LuaParser::OperatorStrcatContext* LuaParser::operatorStrcat() {
+  OperatorStrcatContext *_localctx = _tracker.createInstance<OperatorStrcatContext>(_ctx, getState());
+  enterRule(_localctx, 82, LuaParser::RuleOperatorStrcat);
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    enterOuterAlt(_localctx, 1);
+    setState(459);
+    match(LuaParser::T__6);
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- OperatorAddSubContext ------------------------------------------------------------------
+
+LuaParser::OperatorAddSubContext::OperatorAddSubContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+
+size_t LuaParser::OperatorAddSubContext::getRuleIndex() const {
+  return LuaParser::RuleOperatorAddSub;
+}
+
+
+std::any LuaParser::OperatorAddSubContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
+    return parserVisitor->visitOperatorAddSub(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+LuaParser::OperatorAddSubContext* LuaParser::operatorAddSub() {
+  OperatorAddSubContext *_localctx = _tracker.createInstance<OperatorAddSubContext>(_ctx, getState());
+  enterRule(_localctx, 84, LuaParser::RuleOperatorAddSub);
+  size_t _la = 0;
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    enterOuterAlt(_localctx, 1);
+    setState(461);
+    _la = _input->LA(1);
+    if (!(_la == LuaParser::T__7
+
+    || _la == LuaParser::T__8)) {
+    _errHandler->recoverInline(this);
+    }
+    else {
+      _errHandler->reportMatch(this);
+      consume();
+    }
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- OperatorMulDivModContext ------------------------------------------------------------------
+
+LuaParser::OperatorMulDivModContext::OperatorMulDivModContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+
+size_t LuaParser::OperatorMulDivModContext::getRuleIndex() const {
+  return LuaParser::RuleOperatorMulDivMod;
+}
+
+
+std::any LuaParser::OperatorMulDivModContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
+    return parserVisitor->visitOperatorMulDivMod(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+LuaParser::OperatorMulDivModContext* LuaParser::operatorMulDivMod() {
+  OperatorMulDivModContext *_localctx = _tracker.createInstance<OperatorMulDivModContext>(_ctx, getState());
+  enterRule(_localctx, 86, LuaParser::RuleOperatorMulDivMod);
+  size_t _la = 0;
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    enterOuterAlt(_localctx, 1);
+    setState(463);
+    _la = _input->LA(1);
+    if (!((((_la & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 15360) != 0))) {
+    _errHandler->recoverInline(this);
+    }
+    else {
+      _errHandler->reportMatch(this);
+      consume();
+    }
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- OperatorBitwiseContext ------------------------------------------------------------------
+
+LuaParser::OperatorBitwiseContext::OperatorBitwiseContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+
+size_t LuaParser::OperatorBitwiseContext::getRuleIndex() const {
+  return LuaParser::RuleOperatorBitwise;
+}
+
+
+std::any LuaParser::OperatorBitwiseContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
+    return parserVisitor->visitOperatorBitwise(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+LuaParser::OperatorBitwiseContext* LuaParser::operatorBitwise() {
+  OperatorBitwiseContext *_localctx = _tracker.createInstance<OperatorBitwiseContext>(_ctx, getState());
+  enterRule(_localctx, 88, LuaParser::RuleOperatorBitwise);
+  size_t _la = 0;
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    enterOuterAlt(_localctx, 1);
+    setState(465);
+    _la = _input->LA(1);
+    if (!((((_la & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 507904) != 0))) {
+    _errHandler->recoverInline(this);
+    }
+    else {
+      _errHandler->reportMatch(this);
+      consume();
+    }
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- OperatorUnaryContext ------------------------------------------------------------------
+
+LuaParser::OperatorUnaryContext::OperatorUnaryContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+
+size_t LuaParser::OperatorUnaryContext::getRuleIndex() const {
+  return LuaParser::RuleOperatorUnary;
+}
+
+
+std::any LuaParser::OperatorUnaryContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
+    return parserVisitor->visitOperatorUnary(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+LuaParser::OperatorUnaryContext* LuaParser::operatorUnary() {
+  OperatorUnaryContext *_localctx = _tracker.createInstance<OperatorUnaryContext>(_ctx, getState());
+  enterRule(_localctx, 90, LuaParser::RuleOperatorUnary);
+  size_t _la = 0;
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    enterOuterAlt(_localctx, 1);
+    setState(467);
+    _la = _input->LA(1);
+    if (!((((_la & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 1638912) != 0))) {
+    _errHandler->recoverInline(this);
+    }
+    else {
+      _errHandler->reportMatch(this);
+      consume();
+    }
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- OperatorPowerContext ------------------------------------------------------------------
+
+LuaParser::OperatorPowerContext::OperatorPowerContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+
+size_t LuaParser::OperatorPowerContext::getRuleIndex() const {
+  return LuaParser::RuleOperatorPower;
+}
+
+
+std::any LuaParser::OperatorPowerContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
+    return parserVisitor->visitOperatorPower(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+LuaParser::OperatorPowerContext* LuaParser::operatorPower() {
+  OperatorPowerContext *_localctx = _tracker.createInstance<OperatorPowerContext>(_ctx, getState());
+  enterRule(_localctx, 92, LuaParser::RuleOperatorPower);
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    enterOuterAlt(_localctx, 1);
+    setState(469);
+    match(LuaParser::T__20);
    
   }
   catch (RecognitionException &e) {
@@ -3205,7 +4173,8 @@ size_t LuaParser::UnaryOperatorContext::getRuleIndex() const {
   return LuaParser::RuleUnaryOperator;
 }
 
-antlrcpp::Any LuaParser::UnaryOperatorContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::UnaryOperatorContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitUnaryOperator(this);
   else
@@ -3214,21 +4183,22 @@ antlrcpp::Any LuaParser::UnaryOperatorContext::accept(tree::ParseTreeVisitor *vi
 
 LuaParser::UnaryOperatorContext* LuaParser::unaryOperator() {
   UnaryOperatorContext *_localctx = _tracker.createInstance<UnaryOperatorContext>(_ctx, getState());
-  enterRule(_localctx, 76, LuaParser::RuleUnaryOperator);
+  enterRule(_localctx, 94, LuaParser::RuleUnaryOperator);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(404);
+    setState(471);
     _la = _input->LA(1);
     if (!((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << LuaParser::T__8)
-      | (1ULL << LuaParser::T__15)
-      | (1ULL << LuaParser::T__19)
-      | (1ULL << LuaParser::T__20))) != 0))) {
+      ((1ULL << _la) & 1638912) != 0))) {
     _errHandler->recoverInline(this);
     }
     else {
@@ -3273,7 +4243,8 @@ size_t LuaParser::NumberContext::getRuleIndex() const {
   return LuaParser::RuleNumber;
 }
 
-antlrcpp::Any LuaParser::NumberContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::NumberContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitNumber(this);
   else
@@ -3282,21 +4253,22 @@ antlrcpp::Any LuaParser::NumberContext::accept(tree::ParseTreeVisitor *visitor) 
 
 LuaParser::NumberContext* LuaParser::number() {
   NumberContext *_localctx = _tracker.createInstance<NumberContext>(_ctx, getState());
-  enterRule(_localctx, 78, LuaParser::RuleNumber);
+  enterRule(_localctx, 96, LuaParser::RuleNumber);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(406);
+    setState(473);
     _la = _input->LA(1);
     if (!((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << LuaParser::INT)
-      | (1ULL << LuaParser::HEX)
-      | (1ULL << LuaParser::FLOAT)
-      | (1ULL << LuaParser::HEX_FLOAT))) != 0))) {
+      ((1ULL << _la) & -1152921504606846976) != 0))) {
     _errHandler->recoverInline(this);
     }
     else {
@@ -3337,7 +4309,8 @@ size_t LuaParser::StringContext::getRuleIndex() const {
   return LuaParser::RuleString;
 }
 
-antlrcpp::Any LuaParser::StringContext::accept(tree::ParseTreeVisitor *visitor) {
+
+std::any LuaParser::StringContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<LuaVisitor*>(visitor))
     return parserVisitor->visitString(this);
   else
@@ -3346,20 +4319,22 @@ antlrcpp::Any LuaParser::StringContext::accept(tree::ParseTreeVisitor *visitor) 
 
 LuaParser::StringContext* LuaParser::string() {
   StringContext *_localctx = _tracker.createInstance<StringContext>(_ctx, getState());
-  enterRule(_localctx, 80, LuaParser::RuleString);
+  enterRule(_localctx, 98, LuaParser::RuleString);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(408);
+    setState(475);
     _la = _input->LA(1);
     if (!((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << LuaParser::NORMALSTRING)
-      | (1ULL << LuaParser::CHARSTRING)
-      | (1ULL << LuaParser::LONGSTRING))) != 0))) {
+      ((1ULL << _la) & 1008806316530991104) != 0))) {
     _errHandler->recoverInline(this);
     }
     else {
@@ -3379,7 +4354,7 @@ LuaParser::StringContext* LuaParser::string() {
 
 bool LuaParser::sempred(RuleContext *context, size_t ruleIndex, size_t predicateIndex) {
   switch (ruleIndex) {
-    case 23: return expSempred(dynamic_cast<ExpContext *>(context), predicateIndex);
+    case 23: return expSempred(antlrcpp::downCast<ExpContext *>(context), predicateIndex);
 
   default:
     break;
@@ -3389,7 +4364,14 @@ bool LuaParser::sempred(RuleContext *context, size_t ruleIndex, size_t predicate
 
 bool LuaParser::expSempred(ExpContext *_localctx, size_t predicateIndex) {
   switch (predicateIndex) {
-    case 0: return precpred(_ctx, 1);
+    case 0: return precpred(_ctx, 9);
+    case 1: return precpred(_ctx, 7);
+    case 2: return precpred(_ctx, 6);
+    case 3: return precpred(_ctx, 5);
+    case 4: return precpred(_ctx, 4);
+    case 5: return precpred(_ctx, 3);
+    case 6: return precpred(_ctx, 2);
+    case 7: return precpred(_ctx, 1);
 
   default:
     break;
@@ -3397,356 +4379,10 @@ bool LuaParser::expSempred(ExpContext *_localctx, size_t predicateIndex) {
   return true;
 }
 
-// Static vars and initialization.
-std::vector<dfa::DFA> LuaParser::_decisionToDFA;
-atn::PredictionContextCache LuaParser::_sharedContextCache;
-
-// We own the ATN which in turn owns the ATN states.
-atn::ATN LuaParser::_atn;
-std::vector<uint16_t> LuaParser::_serializedATN;
-
-std::vector<std::string> LuaParser::_ruleNames = {
-  "chunk", "block", "stat", "varDecl", "functioncall", "gotoStat", "doStat", 
-  "whileStat", "repeatStat", "ifStat", "forStat", "forInStat", "funcStat", 
-  "localFuncStat", "localVarDecl", "retstat", "label", "funcname", "varlist", 
-  "namelist", "attnamelist", "nameattrib", "explist", "exp", "prefixexp", 
-  "varOrExp", "var", "varSuffix", "nameAndArgs", "args", "functiondef", 
-  "funcbody", "parlist", "tableconstructor", "fieldlist", "field", "fieldsep", 
-  "linkOperator", "unaryOperator", "number", "string"
-};
-
-std::vector<std::string> LuaParser::_literalNames = {
-  "", "'and'", "'or'", "'..'", "'<='", "'>='", "'~='", "'=='", "'+'", "'-'", 
-  "'*'", "'/'", "'%'", "'//'", "'&'", "'|'", "'~'", "'<<'", "'>>'", "'^'", 
-  "'not'", "'#'", "'function'", "'return'", "'local'", "'true'", "'false'", 
-  "'nil'", "'break'", "'do'", "'end'", "'goto'", "'while'", "'repeat'", 
-  "'until'", "'for'", "'if'", "'then'", "'else'", "'elseif'", "'in'", "';'", 
-  "','", "'.'", "'='", "':'", "'::'", "'...'", "'<'", "'>'", "'('", "')'", 
-  "'{'", "'}'", "'['", "']'"
-};
-
-std::vector<std::string> LuaParser::_symbolicNames = {
-  "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 
-  "", "", "", "", "FUNCTION", "RETURN", "LOCAL", "TRUE", "FALSE", "NIL", 
-  "BREAK", "DO", "END", "GOTO", "WHILE", "REPEAT", "UNTIL", "FOR", "IF", 
-  "THEN", "ELSE", "ELSEIF", "IN", "SEMI", "COMMA", "DOT", "EQL", "COLON", 
-  "DCOLON", "ELLIPSIS", "LT", "GT", "LP", "RP", "LB", "RB", "LSB", "RSB", 
-  "NAME", "NORMALSTRING", "CHARSTRING", "LONGSTRING", "INT", "HEX", "FLOAT", 
-  "HEX_FLOAT", "COMMENT", "LINE_COMMENT", "WS", "SHEBANG"
-};
-
-dfa::Vocabulary LuaParser::_vocabulary(_literalNames, _symbolicNames);
-
-std::vector<std::string> LuaParser::_tokenNames;
-
-LuaParser::Initializer::Initializer() {
-	for (size_t i = 0; i < _symbolicNames.size(); ++i) {
-		std::string name = _vocabulary.getLiteralName(i);
-		if (name.empty()) {
-			name = _vocabulary.getSymbolicName(i);
-		}
-
-		if (name.empty()) {
-			_tokenNames.push_back("<INVALID>");
-		} else {
-      _tokenNames.push_back(name);
-    }
-	}
-
-  _serializedATN = {
-    0x3, 0x608b, 0xa72a, 0x8133, 0xb9ed, 0x417c, 0x3be7, 0x7786, 0x5964, 
-    0x3, 0x45, 0x19d, 0x4, 0x2, 0x9, 0x2, 0x4, 0x3, 0x9, 0x3, 0x4, 0x4, 
-    0x9, 0x4, 0x4, 0x5, 0x9, 0x5, 0x4, 0x6, 0x9, 0x6, 0x4, 0x7, 0x9, 0x7, 
-    0x4, 0x8, 0x9, 0x8, 0x4, 0x9, 0x9, 0x9, 0x4, 0xa, 0x9, 0xa, 0x4, 0xb, 
-    0x9, 0xb, 0x4, 0xc, 0x9, 0xc, 0x4, 0xd, 0x9, 0xd, 0x4, 0xe, 0x9, 0xe, 
-    0x4, 0xf, 0x9, 0xf, 0x4, 0x10, 0x9, 0x10, 0x4, 0x11, 0x9, 0x11, 0x4, 
-    0x12, 0x9, 0x12, 0x4, 0x13, 0x9, 0x13, 0x4, 0x14, 0x9, 0x14, 0x4, 0x15, 
-    0x9, 0x15, 0x4, 0x16, 0x9, 0x16, 0x4, 0x17, 0x9, 0x17, 0x4, 0x18, 0x9, 
-    0x18, 0x4, 0x19, 0x9, 0x19, 0x4, 0x1a, 0x9, 0x1a, 0x4, 0x1b, 0x9, 0x1b, 
-    0x4, 0x1c, 0x9, 0x1c, 0x4, 0x1d, 0x9, 0x1d, 0x4, 0x1e, 0x9, 0x1e, 0x4, 
-    0x1f, 0x9, 0x1f, 0x4, 0x20, 0x9, 0x20, 0x4, 0x21, 0x9, 0x21, 0x4, 0x22, 
-    0x9, 0x22, 0x4, 0x23, 0x9, 0x23, 0x4, 0x24, 0x9, 0x24, 0x4, 0x25, 0x9, 
-    0x25, 0x4, 0x26, 0x9, 0x26, 0x4, 0x27, 0x9, 0x27, 0x4, 0x28, 0x9, 0x28, 
-    0x4, 0x29, 0x9, 0x29, 0x4, 0x2a, 0x9, 0x2a, 0x3, 0x2, 0x5, 0x2, 0x56, 
-    0xa, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x3, 0x7, 0x3, 0x5c, 0xa, 
-    0x3, 0xc, 0x3, 0xe, 0x3, 0x5f, 0xb, 0x3, 0x3, 0x3, 0x5, 0x3, 0x62, 0xa, 
-    0x3, 0x3, 0x4, 0x3, 0x4, 0x3, 0x4, 0x3, 0x4, 0x3, 0x4, 0x3, 0x4, 0x3, 
-    0x4, 0x3, 0x4, 0x3, 0x4, 0x3, 0x4, 0x3, 0x4, 0x3, 0x4, 0x3, 0x4, 0x3, 
-    0x4, 0x3, 0x4, 0x5, 0x4, 0x73, 0xa, 0x4, 0x3, 0x5, 0x3, 0x5, 0x3, 0x5, 
-    0x3, 0x5, 0x5, 0x5, 0x79, 0xa, 0x5, 0x3, 0x6, 0x3, 0x6, 0x6, 0x6, 0x7d, 
-    0xa, 0x6, 0xd, 0x6, 0xe, 0x6, 0x7e, 0x3, 0x6, 0x5, 0x6, 0x82, 0xa, 0x6, 
-    0x3, 0x7, 0x3, 0x7, 0x3, 0x7, 0x3, 0x8, 0x3, 0x8, 0x3, 0x8, 0x3, 0x8, 
-    0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 0x3, 0xa, 
-    0x3, 0xa, 0x3, 0xa, 0x3, 0xa, 0x3, 0xa, 0x5, 0xa, 0x96, 0xa, 0xa, 0x3, 
-    0xb, 0x3, 0xb, 0x3, 0xb, 0x3, 0xb, 0x3, 0xb, 0x3, 0xb, 0x3, 0xb, 0x3, 
-    0xb, 0x3, 0xb, 0x7, 0xb, 0xa1, 0xa, 0xb, 0xc, 0xb, 0xe, 0xb, 0xa4, 0xb, 
-    0xb, 0x3, 0xb, 0x3, 0xb, 0x5, 0xb, 0xa8, 0xa, 0xb, 0x3, 0xb, 0x3, 0xb, 
-    0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 
-    0x3, 0xc, 0x5, 0xc, 0xb4, 0xa, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 
-    0xc, 0x3, 0xd, 0x3, 0xd, 0x3, 0xd, 0x3, 0xd, 0x3, 0xd, 0x3, 0xd, 0x3, 
-    0xd, 0x3, 0xd, 0x3, 0xe, 0x3, 0xe, 0x3, 0xe, 0x3, 0xe, 0x3, 0xf, 0x3, 
-    0xf, 0x3, 0xf, 0x3, 0xf, 0x3, 0xf, 0x3, 0x10, 0x3, 0x10, 0x3, 0x10, 
-    0x3, 0x10, 0x5, 0x10, 0xcf, 0xa, 0x10, 0x3, 0x10, 0x5, 0x10, 0xd2, 0xa, 
-    0x10, 0x3, 0x11, 0x3, 0x11, 0x5, 0x11, 0xd6, 0xa, 0x11, 0x3, 0x11, 0x5, 
-    0x11, 0xd9, 0xa, 0x11, 0x3, 0x12, 0x3, 0x12, 0x3, 0x12, 0x3, 0x12, 0x3, 
-    0x13, 0x3, 0x13, 0x3, 0x13, 0x7, 0x13, 0xe2, 0xa, 0x13, 0xc, 0x13, 0xe, 
-    0x13, 0xe5, 0xb, 0x13, 0x3, 0x13, 0x3, 0x13, 0x5, 0x13, 0xe9, 0xa, 0x13, 
-    0x3, 0x14, 0x3, 0x14, 0x3, 0x14, 0x7, 0x14, 0xee, 0xa, 0x14, 0xc, 0x14, 
-    0xe, 0x14, 0xf1, 0xb, 0x14, 0x3, 0x15, 0x3, 0x15, 0x3, 0x15, 0x7, 0x15, 
-    0xf6, 0xa, 0x15, 0xc, 0x15, 0xe, 0x15, 0xf9, 0xb, 0x15, 0x3, 0x16, 0x3, 
-    0x16, 0x3, 0x16, 0x7, 0x16, 0xfe, 0xa, 0x16, 0xc, 0x16, 0xe, 0x16, 0x101, 
-    0xb, 0x16, 0x3, 0x17, 0x3, 0x17, 0x3, 0x17, 0x3, 0x17, 0x5, 0x17, 0x107, 
-    0xa, 0x17, 0x3, 0x18, 0x3, 0x18, 0x3, 0x18, 0x7, 0x18, 0x10c, 0xa, 0x18, 
-    0xc, 0x18, 0xe, 0x18, 0x10f, 0xb, 0x18, 0x3, 0x19, 0x3, 0x19, 0x3, 0x19, 
-    0x3, 0x19, 0x3, 0x19, 0x3, 0x19, 0x3, 0x19, 0x3, 0x19, 0x3, 0x19, 0x3, 
-    0x19, 0x3, 0x19, 0x3, 0x19, 0x3, 0x19, 0x5, 0x19, 0x11e, 0xa, 0x19, 
-    0x3, 0x19, 0x3, 0x19, 0x3, 0x19, 0x3, 0x19, 0x7, 0x19, 0x124, 0xa, 0x19, 
-    0xc, 0x19, 0xe, 0x19, 0x127, 0xb, 0x19, 0x3, 0x1a, 0x3, 0x1a, 0x7, 0x1a, 
-    0x12b, 0xa, 0x1a, 0xc, 0x1a, 0xe, 0x1a, 0x12e, 0xb, 0x1a, 0x3, 0x1b, 
-    0x3, 0x1b, 0x3, 0x1b, 0x3, 0x1b, 0x3, 0x1b, 0x5, 0x1b, 0x135, 0xa, 0x1b, 
-    0x3, 0x1c, 0x3, 0x1c, 0x3, 0x1c, 0x3, 0x1c, 0x3, 0x1c, 0x3, 0x1c, 0x5, 
-    0x1c, 0x13d, 0xa, 0x1c, 0x3, 0x1c, 0x7, 0x1c, 0x140, 0xa, 0x1c, 0xc, 
-    0x1c, 0xe, 0x1c, 0x143, 0xb, 0x1c, 0x3, 0x1d, 0x7, 0x1d, 0x146, 0xa, 
-    0x1d, 0xc, 0x1d, 0xe, 0x1d, 0x149, 0xb, 0x1d, 0x3, 0x1d, 0x3, 0x1d, 
-    0x3, 0x1d, 0x3, 0x1d, 0x3, 0x1d, 0x3, 0x1d, 0x5, 0x1d, 0x151, 0xa, 0x1d, 
-    0x3, 0x1e, 0x3, 0x1e, 0x5, 0x1e, 0x155, 0xa, 0x1e, 0x3, 0x1e, 0x3, 0x1e, 
-    0x3, 0x1f, 0x3, 0x1f, 0x5, 0x1f, 0x15b, 0xa, 0x1f, 0x3, 0x1f, 0x3, 0x1f, 
-    0x3, 0x1f, 0x5, 0x1f, 0x160, 0xa, 0x1f, 0x3, 0x20, 0x3, 0x20, 0x3, 0x20, 
-    0x3, 0x21, 0x3, 0x21, 0x5, 0x21, 0x167, 0xa, 0x21, 0x3, 0x21, 0x3, 0x21, 
-    0x3, 0x21, 0x3, 0x21, 0x3, 0x22, 0x3, 0x22, 0x3, 0x22, 0x5, 0x22, 0x170, 
-    0xa, 0x22, 0x3, 0x22, 0x5, 0x22, 0x173, 0xa, 0x22, 0x3, 0x23, 0x3, 0x23, 
-    0x5, 0x23, 0x177, 0xa, 0x23, 0x3, 0x23, 0x3, 0x23, 0x3, 0x24, 0x3, 0x24, 
-    0x3, 0x24, 0x3, 0x24, 0x7, 0x24, 0x17f, 0xa, 0x24, 0xc, 0x24, 0xe, 0x24, 
-    0x182, 0xb, 0x24, 0x3, 0x24, 0x5, 0x24, 0x185, 0xa, 0x24, 0x3, 0x25, 
-    0x3, 0x25, 0x3, 0x25, 0x3, 0x25, 0x3, 0x25, 0x3, 0x25, 0x3, 0x25, 0x3, 
-    0x25, 0x3, 0x25, 0x3, 0x25, 0x5, 0x25, 0x191, 0xa, 0x25, 0x3, 0x26, 
-    0x3, 0x26, 0x3, 0x27, 0x3, 0x27, 0x3, 0x28, 0x3, 0x28, 0x3, 0x29, 0x3, 
-    0x29, 0x3, 0x2a, 0x3, 0x2a, 0x3, 0x2a, 0x2, 0x3, 0x30, 0x2b, 0x2, 0x4, 
-    0x6, 0x8, 0xa, 0xc, 0xe, 0x10, 0x12, 0x14, 0x16, 0x18, 0x1a, 0x1c, 0x1e, 
-    0x20, 0x22, 0x24, 0x26, 0x28, 0x2a, 0x2c, 0x2e, 0x30, 0x32, 0x34, 0x36, 
-    0x38, 0x3a, 0x3c, 0x3e, 0x40, 0x42, 0x44, 0x46, 0x48, 0x4a, 0x4c, 0x4e, 
-    0x50, 0x52, 0x2, 0x7, 0x3, 0x2, 0x2b, 0x2c, 0x4, 0x2, 0x3, 0x15, 0x32, 
-    0x33, 0x5, 0x2, 0xb, 0xb, 0x12, 0x12, 0x16, 0x17, 0x3, 0x2, 0x3e, 0x41, 
-    0x3, 0x2, 0x3b, 0x3d, 0x2, 0x1b2, 0x2, 0x55, 0x3, 0x2, 0x2, 0x2, 0x4, 
-    0x5d, 0x3, 0x2, 0x2, 0x2, 0x6, 0x72, 0x3, 0x2, 0x2, 0x2, 0x8, 0x74, 
-    0x3, 0x2, 0x2, 0x2, 0xa, 0x7a, 0x3, 0x2, 0x2, 0x2, 0xc, 0x83, 0x3, 0x2, 
-    0x2, 0x2, 0xe, 0x86, 0x3, 0x2, 0x2, 0x2, 0x10, 0x8a, 0x3, 0x2, 0x2, 
-    0x2, 0x12, 0x90, 0x3, 0x2, 0x2, 0x2, 0x14, 0x97, 0x3, 0x2, 0x2, 0x2, 
-    0x16, 0xab, 0x3, 0x2, 0x2, 0x2, 0x18, 0xb9, 0x3, 0x2, 0x2, 0x2, 0x1a, 
-    0xc1, 0x3, 0x2, 0x2, 0x2, 0x1c, 0xc5, 0x3, 0x2, 0x2, 0x2, 0x1e, 0xca, 
-    0x3, 0x2, 0x2, 0x2, 0x20, 0xd3, 0x3, 0x2, 0x2, 0x2, 0x22, 0xda, 0x3, 
-    0x2, 0x2, 0x2, 0x24, 0xde, 0x3, 0x2, 0x2, 0x2, 0x26, 0xea, 0x3, 0x2, 
-    0x2, 0x2, 0x28, 0xf2, 0x3, 0x2, 0x2, 0x2, 0x2a, 0xfa, 0x3, 0x2, 0x2, 
-    0x2, 0x2c, 0x102, 0x3, 0x2, 0x2, 0x2, 0x2e, 0x108, 0x3, 0x2, 0x2, 0x2, 
-    0x30, 0x11d, 0x3, 0x2, 0x2, 0x2, 0x32, 0x128, 0x3, 0x2, 0x2, 0x2, 0x34, 
-    0x134, 0x3, 0x2, 0x2, 0x2, 0x36, 0x13c, 0x3, 0x2, 0x2, 0x2, 0x38, 0x147, 
-    0x3, 0x2, 0x2, 0x2, 0x3a, 0x154, 0x3, 0x2, 0x2, 0x2, 0x3c, 0x15f, 0x3, 
-    0x2, 0x2, 0x2, 0x3e, 0x161, 0x3, 0x2, 0x2, 0x2, 0x40, 0x164, 0x3, 0x2, 
-    0x2, 0x2, 0x42, 0x172, 0x3, 0x2, 0x2, 0x2, 0x44, 0x174, 0x3, 0x2, 0x2, 
-    0x2, 0x46, 0x17a, 0x3, 0x2, 0x2, 0x2, 0x48, 0x190, 0x3, 0x2, 0x2, 0x2, 
-    0x4a, 0x192, 0x3, 0x2, 0x2, 0x2, 0x4c, 0x194, 0x3, 0x2, 0x2, 0x2, 0x4e, 
-    0x196, 0x3, 0x2, 0x2, 0x2, 0x50, 0x198, 0x3, 0x2, 0x2, 0x2, 0x52, 0x19a, 
-    0x3, 0x2, 0x2, 0x2, 0x54, 0x56, 0x7, 0x45, 0x2, 0x2, 0x55, 0x54, 0x3, 
-    0x2, 0x2, 0x2, 0x55, 0x56, 0x3, 0x2, 0x2, 0x2, 0x56, 0x57, 0x3, 0x2, 
-    0x2, 0x2, 0x57, 0x58, 0x5, 0x4, 0x3, 0x2, 0x58, 0x59, 0x7, 0x2, 0x2, 
-    0x3, 0x59, 0x3, 0x3, 0x2, 0x2, 0x2, 0x5a, 0x5c, 0x5, 0x6, 0x4, 0x2, 
-    0x5b, 0x5a, 0x3, 0x2, 0x2, 0x2, 0x5c, 0x5f, 0x3, 0x2, 0x2, 0x2, 0x5d, 
-    0x5b, 0x3, 0x2, 0x2, 0x2, 0x5d, 0x5e, 0x3, 0x2, 0x2, 0x2, 0x5e, 0x61, 
-    0x3, 0x2, 0x2, 0x2, 0x5f, 0x5d, 0x3, 0x2, 0x2, 0x2, 0x60, 0x62, 0x5, 
-    0x20, 0x11, 0x2, 0x61, 0x60, 0x3, 0x2, 0x2, 0x2, 0x61, 0x62, 0x3, 0x2, 
-    0x2, 0x2, 0x62, 0x5, 0x3, 0x2, 0x2, 0x2, 0x63, 0x73, 0x7, 0x2b, 0x2, 
-    0x2, 0x64, 0x73, 0x5, 0x8, 0x5, 0x2, 0x65, 0x73, 0x5, 0xa, 0x6, 0x2, 
-    0x66, 0x73, 0x5, 0x22, 0x12, 0x2, 0x67, 0x73, 0x7, 0x1e, 0x2, 0x2, 0x68, 
-    0x73, 0x5, 0xc, 0x7, 0x2, 0x69, 0x73, 0x5, 0xe, 0x8, 0x2, 0x6a, 0x73, 
-    0x5, 0x10, 0x9, 0x2, 0x6b, 0x73, 0x5, 0x12, 0xa, 0x2, 0x6c, 0x73, 0x5, 
-    0x14, 0xb, 0x2, 0x6d, 0x73, 0x5, 0x16, 0xc, 0x2, 0x6e, 0x73, 0x5, 0x18, 
-    0xd, 0x2, 0x6f, 0x73, 0x5, 0x1a, 0xe, 0x2, 0x70, 0x73, 0x5, 0x1c, 0xf, 
-    0x2, 0x71, 0x73, 0x5, 0x1e, 0x10, 0x2, 0x72, 0x63, 0x3, 0x2, 0x2, 0x2, 
-    0x72, 0x64, 0x3, 0x2, 0x2, 0x2, 0x72, 0x65, 0x3, 0x2, 0x2, 0x2, 0x72, 
-    0x66, 0x3, 0x2, 0x2, 0x2, 0x72, 0x67, 0x3, 0x2, 0x2, 0x2, 0x72, 0x68, 
-    0x3, 0x2, 0x2, 0x2, 0x72, 0x69, 0x3, 0x2, 0x2, 0x2, 0x72, 0x6a, 0x3, 
-    0x2, 0x2, 0x2, 0x72, 0x6b, 0x3, 0x2, 0x2, 0x2, 0x72, 0x6c, 0x3, 0x2, 
-    0x2, 0x2, 0x72, 0x6d, 0x3, 0x2, 0x2, 0x2, 0x72, 0x6e, 0x3, 0x2, 0x2, 
-    0x2, 0x72, 0x6f, 0x3, 0x2, 0x2, 0x2, 0x72, 0x70, 0x3, 0x2, 0x2, 0x2, 
-    0x72, 0x71, 0x3, 0x2, 0x2, 0x2, 0x73, 0x7, 0x3, 0x2, 0x2, 0x2, 0x74, 
-    0x75, 0x5, 0x26, 0x14, 0x2, 0x75, 0x76, 0x7, 0x2e, 0x2, 0x2, 0x76, 0x78, 
-    0x5, 0x2e, 0x18, 0x2, 0x77, 0x79, 0x7, 0x2b, 0x2, 0x2, 0x78, 0x77, 0x3, 
-    0x2, 0x2, 0x2, 0x78, 0x79, 0x3, 0x2, 0x2, 0x2, 0x79, 0x9, 0x3, 0x2, 
-    0x2, 0x2, 0x7a, 0x7c, 0x5, 0x34, 0x1b, 0x2, 0x7b, 0x7d, 0x5, 0x3a, 0x1e, 
-    0x2, 0x7c, 0x7b, 0x3, 0x2, 0x2, 0x2, 0x7d, 0x7e, 0x3, 0x2, 0x2, 0x2, 
-    0x7e, 0x7c, 0x3, 0x2, 0x2, 0x2, 0x7e, 0x7f, 0x3, 0x2, 0x2, 0x2, 0x7f, 
-    0x81, 0x3, 0x2, 0x2, 0x2, 0x80, 0x82, 0x7, 0x2b, 0x2, 0x2, 0x81, 0x80, 
-    0x3, 0x2, 0x2, 0x2, 0x81, 0x82, 0x3, 0x2, 0x2, 0x2, 0x82, 0xb, 0x3, 
-    0x2, 0x2, 0x2, 0x83, 0x84, 0x7, 0x21, 0x2, 0x2, 0x84, 0x85, 0x7, 0x3a, 
-    0x2, 0x2, 0x85, 0xd, 0x3, 0x2, 0x2, 0x2, 0x86, 0x87, 0x7, 0x1f, 0x2, 
-    0x2, 0x87, 0x88, 0x5, 0x4, 0x3, 0x2, 0x88, 0x89, 0x7, 0x20, 0x2, 0x2, 
-    0x89, 0xf, 0x3, 0x2, 0x2, 0x2, 0x8a, 0x8b, 0x7, 0x22, 0x2, 0x2, 0x8b, 
-    0x8c, 0x5, 0x30, 0x19, 0x2, 0x8c, 0x8d, 0x7, 0x1f, 0x2, 0x2, 0x8d, 0x8e, 
-    0x5, 0x4, 0x3, 0x2, 0x8e, 0x8f, 0x7, 0x20, 0x2, 0x2, 0x8f, 0x11, 0x3, 
-    0x2, 0x2, 0x2, 0x90, 0x91, 0x7, 0x23, 0x2, 0x2, 0x91, 0x92, 0x5, 0x4, 
-    0x3, 0x2, 0x92, 0x93, 0x7, 0x24, 0x2, 0x2, 0x93, 0x95, 0x5, 0x30, 0x19, 
-    0x2, 0x94, 0x96, 0x7, 0x2b, 0x2, 0x2, 0x95, 0x94, 0x3, 0x2, 0x2, 0x2, 
-    0x95, 0x96, 0x3, 0x2, 0x2, 0x2, 0x96, 0x13, 0x3, 0x2, 0x2, 0x2, 0x97, 
-    0x98, 0x7, 0x26, 0x2, 0x2, 0x98, 0x99, 0x5, 0x30, 0x19, 0x2, 0x99, 0x9a, 
-    0x7, 0x27, 0x2, 0x2, 0x9a, 0xa2, 0x5, 0x4, 0x3, 0x2, 0x9b, 0x9c, 0x7, 
-    0x29, 0x2, 0x2, 0x9c, 0x9d, 0x5, 0x30, 0x19, 0x2, 0x9d, 0x9e, 0x7, 0x27, 
-    0x2, 0x2, 0x9e, 0x9f, 0x5, 0x4, 0x3, 0x2, 0x9f, 0xa1, 0x3, 0x2, 0x2, 
-    0x2, 0xa0, 0x9b, 0x3, 0x2, 0x2, 0x2, 0xa1, 0xa4, 0x3, 0x2, 0x2, 0x2, 
-    0xa2, 0xa0, 0x3, 0x2, 0x2, 0x2, 0xa2, 0xa3, 0x3, 0x2, 0x2, 0x2, 0xa3, 
-    0xa7, 0x3, 0x2, 0x2, 0x2, 0xa4, 0xa2, 0x3, 0x2, 0x2, 0x2, 0xa5, 0xa6, 
-    0x7, 0x28, 0x2, 0x2, 0xa6, 0xa8, 0x5, 0x4, 0x3, 0x2, 0xa7, 0xa5, 0x3, 
-    0x2, 0x2, 0x2, 0xa7, 0xa8, 0x3, 0x2, 0x2, 0x2, 0xa8, 0xa9, 0x3, 0x2, 
-    0x2, 0x2, 0xa9, 0xaa, 0x7, 0x20, 0x2, 0x2, 0xaa, 0x15, 0x3, 0x2, 0x2, 
-    0x2, 0xab, 0xac, 0x7, 0x25, 0x2, 0x2, 0xac, 0xad, 0x7, 0x3a, 0x2, 0x2, 
-    0xad, 0xae, 0x7, 0x2e, 0x2, 0x2, 0xae, 0xaf, 0x5, 0x30, 0x19, 0x2, 0xaf, 
-    0xb0, 0x7, 0x2c, 0x2, 0x2, 0xb0, 0xb3, 0x5, 0x30, 0x19, 0x2, 0xb1, 0xb2, 
-    0x7, 0x2c, 0x2, 0x2, 0xb2, 0xb4, 0x5, 0x30, 0x19, 0x2, 0xb3, 0xb1, 0x3, 
-    0x2, 0x2, 0x2, 0xb3, 0xb4, 0x3, 0x2, 0x2, 0x2, 0xb4, 0xb5, 0x3, 0x2, 
-    0x2, 0x2, 0xb5, 0xb6, 0x7, 0x1f, 0x2, 0x2, 0xb6, 0xb7, 0x5, 0x4, 0x3, 
-    0x2, 0xb7, 0xb8, 0x7, 0x20, 0x2, 0x2, 0xb8, 0x17, 0x3, 0x2, 0x2, 0x2, 
-    0xb9, 0xba, 0x7, 0x25, 0x2, 0x2, 0xba, 0xbb, 0x5, 0x28, 0x15, 0x2, 0xbb, 
-    0xbc, 0x7, 0x2a, 0x2, 0x2, 0xbc, 0xbd, 0x5, 0x2e, 0x18, 0x2, 0xbd, 0xbe, 
-    0x7, 0x1f, 0x2, 0x2, 0xbe, 0xbf, 0x5, 0x4, 0x3, 0x2, 0xbf, 0xc0, 0x7, 
-    0x20, 0x2, 0x2, 0xc0, 0x19, 0x3, 0x2, 0x2, 0x2, 0xc1, 0xc2, 0x7, 0x18, 
-    0x2, 0x2, 0xc2, 0xc3, 0x5, 0x24, 0x13, 0x2, 0xc3, 0xc4, 0x5, 0x40, 0x21, 
-    0x2, 0xc4, 0x1b, 0x3, 0x2, 0x2, 0x2, 0xc5, 0xc6, 0x7, 0x1a, 0x2, 0x2, 
-    0xc6, 0xc7, 0x7, 0x18, 0x2, 0x2, 0xc7, 0xc8, 0x7, 0x3a, 0x2, 0x2, 0xc8, 
-    0xc9, 0x5, 0x40, 0x21, 0x2, 0xc9, 0x1d, 0x3, 0x2, 0x2, 0x2, 0xca, 0xcb, 
-    0x7, 0x1a, 0x2, 0x2, 0xcb, 0xce, 0x5, 0x2a, 0x16, 0x2, 0xcc, 0xcd, 0x7, 
-    0x2e, 0x2, 0x2, 0xcd, 0xcf, 0x5, 0x2e, 0x18, 0x2, 0xce, 0xcc, 0x3, 0x2, 
-    0x2, 0x2, 0xce, 0xcf, 0x3, 0x2, 0x2, 0x2, 0xcf, 0xd1, 0x3, 0x2, 0x2, 
-    0x2, 0xd0, 0xd2, 0x7, 0x2b, 0x2, 0x2, 0xd1, 0xd0, 0x3, 0x2, 0x2, 0x2, 
-    0xd1, 0xd2, 0x3, 0x2, 0x2, 0x2, 0xd2, 0x1f, 0x3, 0x2, 0x2, 0x2, 0xd3, 
-    0xd5, 0x7, 0x19, 0x2, 0x2, 0xd4, 0xd6, 0x5, 0x2e, 0x18, 0x2, 0xd5, 0xd4, 
-    0x3, 0x2, 0x2, 0x2, 0xd5, 0xd6, 0x3, 0x2, 0x2, 0x2, 0xd6, 0xd8, 0x3, 
-    0x2, 0x2, 0x2, 0xd7, 0xd9, 0x7, 0x2b, 0x2, 0x2, 0xd8, 0xd7, 0x3, 0x2, 
-    0x2, 0x2, 0xd8, 0xd9, 0x3, 0x2, 0x2, 0x2, 0xd9, 0x21, 0x3, 0x2, 0x2, 
-    0x2, 0xda, 0xdb, 0x7, 0x30, 0x2, 0x2, 0xdb, 0xdc, 0x7, 0x3a, 0x2, 0x2, 
-    0xdc, 0xdd, 0x7, 0x30, 0x2, 0x2, 0xdd, 0x23, 0x3, 0x2, 0x2, 0x2, 0xde, 
-    0xe3, 0x7, 0x3a, 0x2, 0x2, 0xdf, 0xe0, 0x7, 0x2d, 0x2, 0x2, 0xe0, 0xe2, 
-    0x7, 0x3a, 0x2, 0x2, 0xe1, 0xdf, 0x3, 0x2, 0x2, 0x2, 0xe2, 0xe5, 0x3, 
-    0x2, 0x2, 0x2, 0xe3, 0xe1, 0x3, 0x2, 0x2, 0x2, 0xe3, 0xe4, 0x3, 0x2, 
-    0x2, 0x2, 0xe4, 0xe8, 0x3, 0x2, 0x2, 0x2, 0xe5, 0xe3, 0x3, 0x2, 0x2, 
-    0x2, 0xe6, 0xe7, 0x7, 0x2f, 0x2, 0x2, 0xe7, 0xe9, 0x7, 0x3a, 0x2, 0x2, 
-    0xe8, 0xe6, 0x3, 0x2, 0x2, 0x2, 0xe8, 0xe9, 0x3, 0x2, 0x2, 0x2, 0xe9, 
-    0x25, 0x3, 0x2, 0x2, 0x2, 0xea, 0xef, 0x5, 0x36, 0x1c, 0x2, 0xeb, 0xec, 
-    0x7, 0x2c, 0x2, 0x2, 0xec, 0xee, 0x5, 0x36, 0x1c, 0x2, 0xed, 0xeb, 0x3, 
-    0x2, 0x2, 0x2, 0xee, 0xf1, 0x3, 0x2, 0x2, 0x2, 0xef, 0xed, 0x3, 0x2, 
-    0x2, 0x2, 0xef, 0xf0, 0x3, 0x2, 0x2, 0x2, 0xf0, 0x27, 0x3, 0x2, 0x2, 
-    0x2, 0xf1, 0xef, 0x3, 0x2, 0x2, 0x2, 0xf2, 0xf7, 0x7, 0x3a, 0x2, 0x2, 
-    0xf3, 0xf4, 0x7, 0x2c, 0x2, 0x2, 0xf4, 0xf6, 0x7, 0x3a, 0x2, 0x2, 0xf5, 
-    0xf3, 0x3, 0x2, 0x2, 0x2, 0xf6, 0xf9, 0x3, 0x2, 0x2, 0x2, 0xf7, 0xf5, 
-    0x3, 0x2, 0x2, 0x2, 0xf7, 0xf8, 0x3, 0x2, 0x2, 0x2, 0xf8, 0x29, 0x3, 
-    0x2, 0x2, 0x2, 0xf9, 0xf7, 0x3, 0x2, 0x2, 0x2, 0xfa, 0xff, 0x5, 0x2c, 
-    0x17, 0x2, 0xfb, 0xfc, 0x7, 0x2c, 0x2, 0x2, 0xfc, 0xfe, 0x5, 0x2c, 0x17, 
-    0x2, 0xfd, 0xfb, 0x3, 0x2, 0x2, 0x2, 0xfe, 0x101, 0x3, 0x2, 0x2, 0x2, 
-    0xff, 0xfd, 0x3, 0x2, 0x2, 0x2, 0xff, 0x100, 0x3, 0x2, 0x2, 0x2, 0x100, 
-    0x2b, 0x3, 0x2, 0x2, 0x2, 0x101, 0xff, 0x3, 0x2, 0x2, 0x2, 0x102, 0x106, 
-    0x7, 0x3a, 0x2, 0x2, 0x103, 0x104, 0x7, 0x32, 0x2, 0x2, 0x104, 0x105, 
-    0x7, 0x3a, 0x2, 0x2, 0x105, 0x107, 0x7, 0x33, 0x2, 0x2, 0x106, 0x103, 
-    0x3, 0x2, 0x2, 0x2, 0x106, 0x107, 0x3, 0x2, 0x2, 0x2, 0x107, 0x2d, 0x3, 
-    0x2, 0x2, 0x2, 0x108, 0x10d, 0x5, 0x30, 0x19, 0x2, 0x109, 0x10a, 0x7, 
-    0x2c, 0x2, 0x2, 0x10a, 0x10c, 0x5, 0x30, 0x19, 0x2, 0x10b, 0x109, 0x3, 
-    0x2, 0x2, 0x2, 0x10c, 0x10f, 0x3, 0x2, 0x2, 0x2, 0x10d, 0x10b, 0x3, 
-    0x2, 0x2, 0x2, 0x10d, 0x10e, 0x3, 0x2, 0x2, 0x2, 0x10e, 0x2f, 0x3, 0x2, 
-    0x2, 0x2, 0x10f, 0x10d, 0x3, 0x2, 0x2, 0x2, 0x110, 0x111, 0x8, 0x19, 
-    0x1, 0x2, 0x111, 0x11e, 0x7, 0x1d, 0x2, 0x2, 0x112, 0x11e, 0x7, 0x1c, 
-    0x2, 0x2, 0x113, 0x11e, 0x7, 0x1b, 0x2, 0x2, 0x114, 0x11e, 0x5, 0x50, 
-    0x29, 0x2, 0x115, 0x11e, 0x5, 0x52, 0x2a, 0x2, 0x116, 0x11e, 0x7, 0x31, 
-    0x2, 0x2, 0x117, 0x11e, 0x5, 0x32, 0x1a, 0x2, 0x118, 0x11e, 0x5, 0x3e, 
-    0x20, 0x2, 0x119, 0x11e, 0x5, 0x44, 0x23, 0x2, 0x11a, 0x11b, 0x5, 0x4e, 
-    0x28, 0x2, 0x11b, 0x11c, 0x5, 0x30, 0x19, 0x4, 0x11c, 0x11e, 0x3, 0x2, 
-    0x2, 0x2, 0x11d, 0x110, 0x3, 0x2, 0x2, 0x2, 0x11d, 0x112, 0x3, 0x2, 
-    0x2, 0x2, 0x11d, 0x113, 0x3, 0x2, 0x2, 0x2, 0x11d, 0x114, 0x3, 0x2, 
-    0x2, 0x2, 0x11d, 0x115, 0x3, 0x2, 0x2, 0x2, 0x11d, 0x116, 0x3, 0x2, 
-    0x2, 0x2, 0x11d, 0x117, 0x3, 0x2, 0x2, 0x2, 0x11d, 0x118, 0x3, 0x2, 
-    0x2, 0x2, 0x11d, 0x119, 0x3, 0x2, 0x2, 0x2, 0x11d, 0x11a, 0x3, 0x2, 
-    0x2, 0x2, 0x11e, 0x125, 0x3, 0x2, 0x2, 0x2, 0x11f, 0x120, 0xc, 0x3, 
-    0x2, 0x2, 0x120, 0x121, 0x5, 0x4c, 0x27, 0x2, 0x121, 0x122, 0x5, 0x30, 
-    0x19, 0x4, 0x122, 0x124, 0x3, 0x2, 0x2, 0x2, 0x123, 0x11f, 0x3, 0x2, 
-    0x2, 0x2, 0x124, 0x127, 0x3, 0x2, 0x2, 0x2, 0x125, 0x123, 0x3, 0x2, 
-    0x2, 0x2, 0x125, 0x126, 0x3, 0x2, 0x2, 0x2, 0x126, 0x31, 0x3, 0x2, 0x2, 
-    0x2, 0x127, 0x125, 0x3, 0x2, 0x2, 0x2, 0x128, 0x12c, 0x5, 0x34, 0x1b, 
-    0x2, 0x129, 0x12b, 0x5, 0x3a, 0x1e, 0x2, 0x12a, 0x129, 0x3, 0x2, 0x2, 
-    0x2, 0x12b, 0x12e, 0x3, 0x2, 0x2, 0x2, 0x12c, 0x12a, 0x3, 0x2, 0x2, 
-    0x2, 0x12c, 0x12d, 0x3, 0x2, 0x2, 0x2, 0x12d, 0x33, 0x3, 0x2, 0x2, 0x2, 
-    0x12e, 0x12c, 0x3, 0x2, 0x2, 0x2, 0x12f, 0x135, 0x5, 0x36, 0x1c, 0x2, 
-    0x130, 0x131, 0x7, 0x34, 0x2, 0x2, 0x131, 0x132, 0x5, 0x30, 0x19, 0x2, 
-    0x132, 0x133, 0x7, 0x35, 0x2, 0x2, 0x133, 0x135, 0x3, 0x2, 0x2, 0x2, 
-    0x134, 0x12f, 0x3, 0x2, 0x2, 0x2, 0x134, 0x130, 0x3, 0x2, 0x2, 0x2, 
-    0x135, 0x35, 0x3, 0x2, 0x2, 0x2, 0x136, 0x13d, 0x7, 0x3a, 0x2, 0x2, 
-    0x137, 0x138, 0x7, 0x34, 0x2, 0x2, 0x138, 0x139, 0x5, 0x30, 0x19, 0x2, 
-    0x139, 0x13a, 0x7, 0x35, 0x2, 0x2, 0x13a, 0x13b, 0x5, 0x38, 0x1d, 0x2, 
-    0x13b, 0x13d, 0x3, 0x2, 0x2, 0x2, 0x13c, 0x136, 0x3, 0x2, 0x2, 0x2, 
-    0x13c, 0x137, 0x3, 0x2, 0x2, 0x2, 0x13d, 0x141, 0x3, 0x2, 0x2, 0x2, 
-    0x13e, 0x140, 0x5, 0x38, 0x1d, 0x2, 0x13f, 0x13e, 0x3, 0x2, 0x2, 0x2, 
-    0x140, 0x143, 0x3, 0x2, 0x2, 0x2, 0x141, 0x13f, 0x3, 0x2, 0x2, 0x2, 
-    0x141, 0x142, 0x3, 0x2, 0x2, 0x2, 0x142, 0x37, 0x3, 0x2, 0x2, 0x2, 0x143, 
-    0x141, 0x3, 0x2, 0x2, 0x2, 0x144, 0x146, 0x5, 0x3a, 0x1e, 0x2, 0x145, 
-    0x144, 0x3, 0x2, 0x2, 0x2, 0x146, 0x149, 0x3, 0x2, 0x2, 0x2, 0x147, 
-    0x145, 0x3, 0x2, 0x2, 0x2, 0x147, 0x148, 0x3, 0x2, 0x2, 0x2, 0x148, 
-    0x150, 0x3, 0x2, 0x2, 0x2, 0x149, 0x147, 0x3, 0x2, 0x2, 0x2, 0x14a, 
-    0x14b, 0x7, 0x38, 0x2, 0x2, 0x14b, 0x14c, 0x5, 0x30, 0x19, 0x2, 0x14c, 
-    0x14d, 0x7, 0x39, 0x2, 0x2, 0x14d, 0x151, 0x3, 0x2, 0x2, 0x2, 0x14e, 
-    0x14f, 0x7, 0x2d, 0x2, 0x2, 0x14f, 0x151, 0x7, 0x3a, 0x2, 0x2, 0x150, 
-    0x14a, 0x3, 0x2, 0x2, 0x2, 0x150, 0x14e, 0x3, 0x2, 0x2, 0x2, 0x151, 
-    0x39, 0x3, 0x2, 0x2, 0x2, 0x152, 0x153, 0x7, 0x2f, 0x2, 0x2, 0x153, 
-    0x155, 0x7, 0x3a, 0x2, 0x2, 0x154, 0x152, 0x3, 0x2, 0x2, 0x2, 0x154, 
-    0x155, 0x3, 0x2, 0x2, 0x2, 0x155, 0x156, 0x3, 0x2, 0x2, 0x2, 0x156, 
-    0x157, 0x5, 0x3c, 0x1f, 0x2, 0x157, 0x3b, 0x3, 0x2, 0x2, 0x2, 0x158, 
-    0x15a, 0x7, 0x34, 0x2, 0x2, 0x159, 0x15b, 0x5, 0x2e, 0x18, 0x2, 0x15a, 
-    0x159, 0x3, 0x2, 0x2, 0x2, 0x15a, 0x15b, 0x3, 0x2, 0x2, 0x2, 0x15b, 
-    0x15c, 0x3, 0x2, 0x2, 0x2, 0x15c, 0x160, 0x7, 0x35, 0x2, 0x2, 0x15d, 
-    0x160, 0x5, 0x44, 0x23, 0x2, 0x15e, 0x160, 0x5, 0x52, 0x2a, 0x2, 0x15f, 
-    0x158, 0x3, 0x2, 0x2, 0x2, 0x15f, 0x15d, 0x3, 0x2, 0x2, 0x2, 0x15f, 
-    0x15e, 0x3, 0x2, 0x2, 0x2, 0x160, 0x3d, 0x3, 0x2, 0x2, 0x2, 0x161, 0x162, 
-    0x7, 0x18, 0x2, 0x2, 0x162, 0x163, 0x5, 0x40, 0x21, 0x2, 0x163, 0x3f, 
-    0x3, 0x2, 0x2, 0x2, 0x164, 0x166, 0x7, 0x34, 0x2, 0x2, 0x165, 0x167, 
-    0x5, 0x42, 0x22, 0x2, 0x166, 0x165, 0x3, 0x2, 0x2, 0x2, 0x166, 0x167, 
-    0x3, 0x2, 0x2, 0x2, 0x167, 0x168, 0x3, 0x2, 0x2, 0x2, 0x168, 0x169, 
-    0x7, 0x35, 0x2, 0x2, 0x169, 0x16a, 0x5, 0x4, 0x3, 0x2, 0x16a, 0x16b, 
-    0x7, 0x20, 0x2, 0x2, 0x16b, 0x41, 0x3, 0x2, 0x2, 0x2, 0x16c, 0x16f, 
-    0x5, 0x28, 0x15, 0x2, 0x16d, 0x16e, 0x7, 0x2c, 0x2, 0x2, 0x16e, 0x170, 
-    0x7, 0x31, 0x2, 0x2, 0x16f, 0x16d, 0x3, 0x2, 0x2, 0x2, 0x16f, 0x170, 
-    0x3, 0x2, 0x2, 0x2, 0x170, 0x173, 0x3, 0x2, 0x2, 0x2, 0x171, 0x173, 
-    0x7, 0x31, 0x2, 0x2, 0x172, 0x16c, 0x3, 0x2, 0x2, 0x2, 0x172, 0x171, 
-    0x3, 0x2, 0x2, 0x2, 0x173, 0x43, 0x3, 0x2, 0x2, 0x2, 0x174, 0x176, 0x7, 
-    0x36, 0x2, 0x2, 0x175, 0x177, 0x5, 0x46, 0x24, 0x2, 0x176, 0x175, 0x3, 
-    0x2, 0x2, 0x2, 0x176, 0x177, 0x3, 0x2, 0x2, 0x2, 0x177, 0x178, 0x3, 
-    0x2, 0x2, 0x2, 0x178, 0x179, 0x7, 0x37, 0x2, 0x2, 0x179, 0x45, 0x3, 
-    0x2, 0x2, 0x2, 0x17a, 0x180, 0x5, 0x48, 0x25, 0x2, 0x17b, 0x17c, 0x5, 
-    0x4a, 0x26, 0x2, 0x17c, 0x17d, 0x5, 0x48, 0x25, 0x2, 0x17d, 0x17f, 0x3, 
-    0x2, 0x2, 0x2, 0x17e, 0x17b, 0x3, 0x2, 0x2, 0x2, 0x17f, 0x182, 0x3, 
-    0x2, 0x2, 0x2, 0x180, 0x17e, 0x3, 0x2, 0x2, 0x2, 0x180, 0x181, 0x3, 
-    0x2, 0x2, 0x2, 0x181, 0x184, 0x3, 0x2, 0x2, 0x2, 0x182, 0x180, 0x3, 
-    0x2, 0x2, 0x2, 0x183, 0x185, 0x5, 0x4a, 0x26, 0x2, 0x184, 0x183, 0x3, 
-    0x2, 0x2, 0x2, 0x184, 0x185, 0x3, 0x2, 0x2, 0x2, 0x185, 0x47, 0x3, 0x2, 
-    0x2, 0x2, 0x186, 0x187, 0x7, 0x38, 0x2, 0x2, 0x187, 0x188, 0x5, 0x30, 
-    0x19, 0x2, 0x188, 0x189, 0x7, 0x39, 0x2, 0x2, 0x189, 0x18a, 0x7, 0x2e, 
-    0x2, 0x2, 0x18a, 0x18b, 0x5, 0x30, 0x19, 0x2, 0x18b, 0x191, 0x3, 0x2, 
-    0x2, 0x2, 0x18c, 0x18d, 0x7, 0x3a, 0x2, 0x2, 0x18d, 0x18e, 0x7, 0x2e, 
-    0x2, 0x2, 0x18e, 0x191, 0x5, 0x30, 0x19, 0x2, 0x18f, 0x191, 0x5, 0x30, 
-    0x19, 0x2, 0x190, 0x186, 0x3, 0x2, 0x2, 0x2, 0x190, 0x18c, 0x3, 0x2, 
-    0x2, 0x2, 0x190, 0x18f, 0x3, 0x2, 0x2, 0x2, 0x191, 0x49, 0x3, 0x2, 0x2, 
-    0x2, 0x192, 0x193, 0x9, 0x2, 0x2, 0x2, 0x193, 0x4b, 0x3, 0x2, 0x2, 0x2, 
-    0x194, 0x195, 0x9, 0x3, 0x2, 0x2, 0x195, 0x4d, 0x3, 0x2, 0x2, 0x2, 0x196, 
-    0x197, 0x9, 0x4, 0x2, 0x2, 0x197, 0x4f, 0x3, 0x2, 0x2, 0x2, 0x198, 0x199, 
-    0x9, 0x5, 0x2, 0x2, 0x199, 0x51, 0x3, 0x2, 0x2, 0x2, 0x19a, 0x19b, 0x9, 
-    0x6, 0x2, 0x2, 0x19b, 0x53, 0x3, 0x2, 0x2, 0x2, 0x2a, 0x55, 0x5d, 0x61, 
-    0x72, 0x78, 0x7e, 0x81, 0x95, 0xa2, 0xa7, 0xb3, 0xce, 0xd1, 0xd5, 0xd8, 
-    0xe3, 0xe8, 0xef, 0xf7, 0xff, 0x106, 0x10d, 0x11d, 0x125, 0x12c, 0x134, 
-    0x13c, 0x141, 0x147, 0x150, 0x154, 0x15a, 0x15f, 0x166, 0x16f, 0x172, 
-    0x176, 0x180, 0x184, 0x190, 
-  };
-
-  atn::ATNDeserializer deserializer;
-  _atn = deserializer.deserialize(_serializedATN);
-
-  size_t count = _atn.getNumberOfDecisions();
-  _decisionToDFA.reserve(count);
-  for (size_t i = 0; i < count; i++) { 
-    _decisionToDFA.emplace_back(_atn.getDecisionState(i), i);
-  }
+void LuaParser::initialize() {
+#if ANTLR4_USE_THREAD_LOCAL_CACHE
+  luaParserInitialize();
+#else
+  ::antlr4::internal::call_once(luaParserOnceFlag, luaParserInitialize);
+#endif
 }
-
-LuaParser::Initializer LuaParser::_init;

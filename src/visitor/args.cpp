@@ -8,7 +8,7 @@ using namespace antlr4;
 
 
 // LP explist? RP | tableconstructor | string;
-antlrcpp::Any FormatVisitor::visitArgs(LuaParser::ArgsContext* ctx) {
+std::any FormatVisitor::visitArgs(LuaParser::ArgsContext* ctx) {
     LOG_FUNCTION_BEGIN();
     if (ctx->LP() != nullptr) {
         cur_writer() << ctx->LP()->getText();

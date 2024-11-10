@@ -7,7 +7,7 @@
 using namespace antlr4;
 
 // exp (COMMA exp)*;
-antlrcpp::Any FormatVisitor::visitExplist(LuaParser::ExplistContext* ctx) {
+std::any FormatVisitor::visitExplist(LuaParser::ExplistContext* ctx) {
     LOG_FUNCTION_BEGIN();
     int n = ctx->COMMA().size();
     auto p = calcASTLengthAndLines(ctx->exp().front(), [=]() { visitExp(ctx->exp().front()); });
@@ -137,6 +137,52 @@ antlrcpp::Any FormatVisitor::visitExplist(LuaParser::ExplistContext* ctx) {
     return nullptr;
 }
 
+void FormatVisitor::visitLinkOperator(LuaParser::ExpContext* ctx, antlr4::ParserRuleContext* linkOperator) {
+    visitExp(ctx->exp()[0]);
+    bool hasIncIndent = false;
+    if (config_.get<bool>("break_after_operator")) {
+        cur_writer() << commentAfter(ctx->exp()[0], " ");
+        cur_writer() << linkOperator->getText();
+        bool beyondLimit = false;
+        pushWriter();
+        visitExp(ctx->exp()[1]);
+        int length = cur_writer().firstLineColumn();
+        length++;  // calc the white space after operator
+        popWriter();
+        beyondLimit = cur_columns() + length > config_.get<int>("column_limit");
+        if (beyondLimit) {
+            cur_writer() << commentAfterNewLine(linkOperator, INC_CONTINUATION_INDENT);
+            cur_writer() << indentWithAlign();
+            hasIncIndent = true;
+        } else {
+            cur_writer() << commentAfter(linkOperator, " ");
+        }
+        visitExp(ctx->exp()[1]);
+    } else {
+        bool beyondLimit = false;
+        pushWriter();
+        cur_writer() << linkOperator->getText();
+        cur_writer() << commentAfter(linkOperator, " ");
+        visitExp(ctx->exp()[1]);
+        int length = cur_writer().firstLineColumn();
+        popWriter();
+        beyondLimit = cur_columns() + length > config_.get<int>("column_limit");
+        if (beyondLimit) {
+            cur_writer() << commentAfterNewLine(ctx->exp()[0], INC_CONTINUATION_INDENT);
+            cur_writer() << indentWithAlign();
+            hasIncIndent = true;
+        } else {
+            cur_writer() << commentAfter(ctx->exp()[0], " ");
+        }
+        cur_writer() << linkOperator->getText();
+        cur_writer() << commentAfter(linkOperator, " ");
+        visitExp(ctx->exp()[1]);
+    }
+    if (hasIncIndent) {
+        decContinuationIndent();
+    }
+}
+
 // exp:
 // 	NIL
 // 	| FALSE
@@ -150,52 +196,24 @@ antlrcpp::Any FormatVisitor::visitExplist(LuaParser::ExplistContext* ctx) {
 // 	| exp linkOperator exp
 // 	| unaryOperator exp;
 
-antlrcpp::Any FormatVisitor::visitExp(LuaParser::ExpContext* ctx) {
+std::any FormatVisitor::visitExp(LuaParser::ExpContext* ctx) {
     LOG_FUNCTION_BEGIN();
-    if (ctx->linkOperator() != nullptr) {
-        visitExp(ctx->exp()[0]);
-        bool hasIncIndent = false;
-        if (config_.get<bool>("break_after_operator")) {
-            cur_writer() << commentAfter(ctx->exp()[0], " ");
-            cur_writer() << ctx->linkOperator()->getText();
-            bool beyondLimit = false;
-            pushWriter();
-            visitExp(ctx->exp()[1]);
-            int length = cur_writer().firstLineColumn();
-            length++;  // calc the white space after operator
-            popWriter();
-            beyondLimit = cur_columns() + length > config_.get<int>("column_limit");
-            if (beyondLimit) {
-                cur_writer() << commentAfterNewLine(ctx->linkOperator(), INC_CONTINUATION_INDENT);
-                cur_writer() << indentWithAlign();
-                hasIncIndent = true;
-            } else {
-                cur_writer() << commentAfter(ctx->linkOperator(), " ");
-            }
-            visitExp(ctx->exp()[1]);
-        } else {
-            bool beyondLimit = false;
-            pushWriter();
-            cur_writer() << ctx->linkOperator()->getText();
-            cur_writer() << commentAfter(ctx->linkOperator(), " ");
-            visitExp(ctx->exp()[1]);
-            int length = cur_writer().firstLineColumn();
-            popWriter();
-            beyondLimit = cur_columns() + length > config_.get<int>("column_limit");
-            if (beyondLimit) {
-                cur_writer() << commentAfterNewLine(ctx->exp()[0], INC_CONTINUATION_INDENT);
-                cur_writer() << indentWithAlign();
-                hasIncIndent = true;
-            } else {
-                cur_writer() << commentAfter(ctx->exp()[0], " ");
-            }
-            cur_writer() << ctx->linkOperator()->getText();
-            cur_writer() << commentAfter(ctx->linkOperator(), " ");
-            visitExp(ctx->exp()[1]);
-        }
-        if (hasIncIndent) {
-            decContinuationIndent();
-        }
+    if (ctx->operatorPower() != nullptr) {
+        visitLinkOperator(ctx, ctx->operatorPower());
+    } else if (ctx->operatorMulDivMod() != nullptr) {
+        visitLinkOperator(ctx, ctx->operatorMulDivMod());
+    } else if (ctx->operatorAddSub() != nullptr) {
+        visitLinkOperator(ctx, ctx->operatorAddSub());
+    } else if (ctx->operatorStrcat() != nullptr) {
+        visitLinkOperator(ctx, ctx->operatorStrcat());
+    } else if (ctx->operatorComparison() != nullptr) {
+        visitLinkOperator(ctx, ctx->operatorComparison());
+    } else if (ctx->operatorAnd() != nullptr) {
+        visitLinkOperator(ctx, ctx->operatorAnd());
+    } else if (ctx->operatorOr() != nullptr) {
+        visitLinkOperator(ctx, ctx->operatorOr());
+    } else if (ctx->operatorBitwise() != nullptr) {
+        visitLinkOperator(ctx, ctx->operatorBitwise());
     } else if (ctx->unaryOperator() != nullptr) {
         cur_writer() << ctx->unaryOperator()->getText();
         if (ctx->unaryOperator()->getText() == "not") {
@@ -224,7 +242,7 @@ antlrcpp::Any FormatVisitor::visitExp(LuaParser::ExpContext* ctx) {
 }
 
 // varOrExp nameAndArgs*;
-antlrcpp::Any FormatVisitor::visitPrefixexp(LuaParser::PrefixexpContext* ctx) {
+std::any FormatVisitor::visitPrefixexp(LuaParser::PrefixexpContext* ctx) {
     LOG_FUNCTION_BEGIN();
     chainedMethodCallHasIncIndent_.push_back(false);
     chainedMethodCallIsFirst_.push_back(false);
@@ -254,7 +272,7 @@ antlrcpp::Any FormatVisitor::visitPrefixexp(LuaParser::PrefixexpContext* ctx) {
 }
 
 // var | LP exp RP;
-antlrcpp::Any FormatVisitor::visitVarOrExp(LuaParser::VarOrExpContext* ctx) {
+std::any FormatVisitor::visitVarOrExp(LuaParser::VarOrExpContext* ctx) {
     LOG_FUNCTION_BEGIN();
     if (ctx->exp() != nullptr) {
         cur_writer() << ctx->LP()->getText();

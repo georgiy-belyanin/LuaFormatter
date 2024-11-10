@@ -55,7 +55,7 @@ void FormatVisitor::buildArguments(std::vector<LuaParser::NameAndArgsContext*> v
 }
 
 // (COLON NAME)? args;
-antlrcpp::Any FormatVisitor::visitNameAndArgs(LuaParser::NameAndArgsContext* ctx) {
+std::any FormatVisitor::visitNameAndArgs(LuaParser::NameAndArgsContext* ctx) {
     LOG_FUNCTION_BEGIN();
     if (ctx->COLON() != nullptr) {
         bool beyondLimit = false;

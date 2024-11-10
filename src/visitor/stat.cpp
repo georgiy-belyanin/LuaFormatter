@@ -6,7 +6,7 @@
 
 using namespace antlr4;
 
-antlrcpp::Any FormatVisitor::visitStat(LuaParser::StatContext* ctx) {
+std::any FormatVisitor::visitStat(LuaParser::StatContext* ctx) {
     LOG_FUNCTION_BEGIN();
     if (chop_down_block_) {
         cur_writer() << indent();
@@ -17,7 +17,7 @@ antlrcpp::Any FormatVisitor::visitStat(LuaParser::StatContext* ctx) {
 }
 
 // GOTO NAME;
-antlrcpp::Any FormatVisitor::visitGotoStat(LuaParser::GotoStatContext* ctx) {
+std::any FormatVisitor::visitGotoStat(LuaParser::GotoStatContext* ctx) {
     LOG_FUNCTION_BEGIN();
     cur_writer() << ctx->GOTO()->getText();
     cur_writer() << commentAfter(ctx->GOTO(), " ");
@@ -27,7 +27,7 @@ antlrcpp::Any FormatVisitor::visitGotoStat(LuaParser::GotoStatContext* ctx) {
 }
 
 // DO block END;
-antlrcpp::Any FormatVisitor::visitDoStat(LuaParser::DoStatContext* ctx) {
+std::any FormatVisitor::visitDoStat(LuaParser::DoStatContext* ctx) {
     LOG_FUNCTION_BEGIN();
     cur_writer() << ctx->DO()->getText();
     visitBlockAndComment(ctx->DO(), ctx->block(), CONTROL_BLOCK);
@@ -37,7 +37,7 @@ antlrcpp::Any FormatVisitor::visitDoStat(LuaParser::DoStatContext* ctx) {
 }
 
 // WHILE exp DO block END;
-antlrcpp::Any FormatVisitor::visitWhileStat(LuaParser::WhileStatContext* ctx) {
+std::any FormatVisitor::visitWhileStat(LuaParser::WhileStatContext* ctx) {
     LOG_FUNCTION_BEGIN();
     cur_writer() << ctx->WHILE()->getText();
     cur_writer() << commentAfter(ctx->WHILE(), " ");
@@ -51,7 +51,7 @@ antlrcpp::Any FormatVisitor::visitWhileStat(LuaParser::WhileStatContext* ctx) {
 }
 
 // REPEAT block UNTIL exp;
-antlrcpp::Any FormatVisitor::visitRepeatStat(LuaParser::RepeatStatContext* ctx) {
+std::any FormatVisitor::visitRepeatStat(LuaParser::RepeatStatContext* ctx) {
     LOG_FUNCTION_BEGIN();
     cur_writer() << ctx->REPEAT()->getText();
     visitBlockAndComment(ctx->REPEAT(), ctx->block(), CONTROL_BLOCK);
@@ -67,7 +67,7 @@ antlrcpp::Any FormatVisitor::visitRepeatStat(LuaParser::RepeatStatContext* ctx) 
 }
 
 // IF exp THEN block (ELSEIF exp THEN block)* (ELSE block)? END;
-antlrcpp::Any FormatVisitor::visitIfStat(LuaParser::IfStatContext* ctx) {
+std::any FormatVisitor::visitIfStat(LuaParser::IfStatContext* ctx) {
     LOG_FUNCTION_BEGIN();
     // keep if statement one line only when there is no elseif or else statement.
     cur_writer() << ctx->IF()->getText();
@@ -118,7 +118,7 @@ antlrcpp::Any FormatVisitor::visitIfStat(LuaParser::IfStatContext* ctx) {
 }
 
 // FOR NAME EQL exp COMMA exp (COMMA exp)? DO block END;
-antlrcpp::Any FormatVisitor::visitForStat(LuaParser::ForStatContext* ctx) {
+std::any FormatVisitor::visitForStat(LuaParser::ForStatContext* ctx) {
     LOG_FUNCTION_BEGIN();
     cur_writer() << ctx->FOR()->getText();
     cur_writer() << commentAfter(ctx->FOR(), " ");
@@ -148,7 +148,7 @@ antlrcpp::Any FormatVisitor::visitForStat(LuaParser::ForStatContext* ctx) {
 }
 
 // FOR namelist IN explist DO block END;
-antlrcpp::Any FormatVisitor::visitForInStat(LuaParser::ForInStatContext* ctx) {
+std::any FormatVisitor::visitForInStat(LuaParser::ForInStatContext* ctx) {
     LOG_FUNCTION_BEGIN();
     cur_writer() << ctx->FOR()->getText();
     cur_writer() << commentAfter(ctx->FOR(), " ");
@@ -166,7 +166,7 @@ antlrcpp::Any FormatVisitor::visitForInStat(LuaParser::ForInStatContext* ctx) {
 }
 
 // RETURN explist? SEMI?;
-antlrcpp::Any FormatVisitor::visitRetstat(LuaParser::RetstatContext* ctx) {
+std::any FormatVisitor::visitRetstat(LuaParser::RetstatContext* ctx) {
     LOG_FUNCTION_BEGIN();
     if (chop_down_block_) {
         cur_writer() << indent();

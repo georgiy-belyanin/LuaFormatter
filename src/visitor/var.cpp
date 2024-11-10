@@ -7,7 +7,7 @@
 using namespace antlr4;
 
 // (NAME | LP exp RP varSuffix) varSuffix*;
-antlrcpp::Any FormatVisitor::visitVar(LuaParser::VarContext* ctx) {
+std::any FormatVisitor::visitVar(LuaParser::VarContext* ctx) {
     LOG_FUNCTION_BEGIN();
     int startAt = 0;
     if (ctx->exp() != nullptr) {
@@ -41,7 +41,7 @@ antlrcpp::Any FormatVisitor::visitVar(LuaParser::VarContext* ctx) {
 }
 
 // nameAndArgs* (LSB exp RSB | DOT NAME);
-antlrcpp::Any FormatVisitor::visitVarSuffix(LuaParser::VarSuffixContext* ctx) {
+std::any FormatVisitor::visitVarSuffix(LuaParser::VarSuffixContext* ctx) {
     LOG_FUNCTION_BEGIN();
     chainedMethodCallIsFirst_.push_back(false);
     chainedMethodCallHasIncIndent_.push_back(false);

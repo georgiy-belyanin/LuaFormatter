@@ -1,5 +1,5 @@
 
-// Generated from Lua.g4 by ANTLR 4.7.1
+// Generated from Lua.g4 by ANTLR 4.13.2
 
 #pragma once
 
@@ -15,167 +15,203 @@
 class  LuaBaseVisitor : public LuaVisitor {
 public:
 
-  virtual antlrcpp::Any visitChunk(LuaParser::ChunkContext *ctx) override {
+  virtual std::any visitChunk(LuaParser::ChunkContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitBlock(LuaParser::BlockContext *ctx) override {
+  virtual std::any visitBlock(LuaParser::BlockContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitStat(LuaParser::StatContext *ctx) override {
+  virtual std::any visitStat(LuaParser::StatContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitVarDecl(LuaParser::VarDeclContext *ctx) override {
+  virtual std::any visitVarDecl(LuaParser::VarDeclContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitFunctioncall(LuaParser::FunctioncallContext *ctx) override {
+  virtual std::any visitFunctioncall(LuaParser::FunctioncallContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitGotoStat(LuaParser::GotoStatContext *ctx) override {
+  virtual std::any visitGotoStat(LuaParser::GotoStatContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitDoStat(LuaParser::DoStatContext *ctx) override {
+  virtual std::any visitDoStat(LuaParser::DoStatContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitWhileStat(LuaParser::WhileStatContext *ctx) override {
+  virtual std::any visitWhileStat(LuaParser::WhileStatContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitRepeatStat(LuaParser::RepeatStatContext *ctx) override {
+  virtual std::any visitRepeatStat(LuaParser::RepeatStatContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitIfStat(LuaParser::IfStatContext *ctx) override {
+  virtual std::any visitIfStat(LuaParser::IfStatContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitForStat(LuaParser::ForStatContext *ctx) override {
+  virtual std::any visitForStat(LuaParser::ForStatContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitForInStat(LuaParser::ForInStatContext *ctx) override {
+  virtual std::any visitForInStat(LuaParser::ForInStatContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitFuncStat(LuaParser::FuncStatContext *ctx) override {
+  virtual std::any visitFuncStat(LuaParser::FuncStatContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitLocalFuncStat(LuaParser::LocalFuncStatContext *ctx) override {
+  virtual std::any visitLocalFuncStat(LuaParser::LocalFuncStatContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitLocalVarDecl(LuaParser::LocalVarDeclContext *ctx) override {
+  virtual std::any visitLocalVarDecl(LuaParser::LocalVarDeclContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitRetstat(LuaParser::RetstatContext *ctx) override {
+  virtual std::any visitRetstat(LuaParser::RetstatContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitLabel(LuaParser::LabelContext *ctx) override {
+  virtual std::any visitLabel(LuaParser::LabelContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitFuncname(LuaParser::FuncnameContext *ctx) override {
+  virtual std::any visitFuncname(LuaParser::FuncnameContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitVarlist(LuaParser::VarlistContext *ctx) override {
+  virtual std::any visitVarlist(LuaParser::VarlistContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitNamelist(LuaParser::NamelistContext *ctx) override {
+  virtual std::any visitNamelist(LuaParser::NamelistContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitAttnamelist(LuaParser::AttnamelistContext *ctx) override {
+  virtual std::any visitAttnamelist(LuaParser::AttnamelistContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitNameattrib(LuaParser::NameattribContext *ctx) override {
+  virtual std::any visitNameattrib(LuaParser::NameattribContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitExplist(LuaParser::ExplistContext *ctx) override {
+  virtual std::any visitExplist(LuaParser::ExplistContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitExp(LuaParser::ExpContext *ctx) override {
+  virtual std::any visitExp(LuaParser::ExpContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitPrefixexp(LuaParser::PrefixexpContext *ctx) override {
+  virtual std::any visitLongString(LuaParser::LongStringContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitVarOrExp(LuaParser::VarOrExpContext *ctx) override {
+  virtual std::any visitPrefixexp(LuaParser::PrefixexpContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitVar(LuaParser::VarContext *ctx) override {
+  virtual std::any visitVarOrExp(LuaParser::VarOrExpContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitVarSuffix(LuaParser::VarSuffixContext *ctx) override {
+  virtual std::any visitVar(LuaParser::VarContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitNameAndArgs(LuaParser::NameAndArgsContext *ctx) override {
+  virtual std::any visitVarSuffix(LuaParser::VarSuffixContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitArgs(LuaParser::ArgsContext *ctx) override {
+  virtual std::any visitNameAndArgs(LuaParser::NameAndArgsContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitFunctiondef(LuaParser::FunctiondefContext *ctx) override {
+  virtual std::any visitArgs(LuaParser::ArgsContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitFuncbody(LuaParser::FuncbodyContext *ctx) override {
+  virtual std::any visitFunctiondef(LuaParser::FunctiondefContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitParlist(LuaParser::ParlistContext *ctx) override {
+  virtual std::any visitFuncbody(LuaParser::FuncbodyContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitTableconstructor(LuaParser::TableconstructorContext *ctx) override {
+  virtual std::any visitParlist(LuaParser::ParlistContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitFieldlist(LuaParser::FieldlistContext *ctx) override {
+  virtual std::any visitTableconstructor(LuaParser::TableconstructorContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitField(LuaParser::FieldContext *ctx) override {
+  virtual std::any visitFieldlist(LuaParser::FieldlistContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitFieldsep(LuaParser::FieldsepContext *ctx) override {
+  virtual std::any visitField(LuaParser::FieldContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitLinkOperator(LuaParser::LinkOperatorContext *ctx) override {
+  virtual std::any visitFieldsep(LuaParser::FieldsepContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitUnaryOperator(LuaParser::UnaryOperatorContext *ctx) override {
+  virtual std::any visitOperatorOr(LuaParser::OperatorOrContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitNumber(LuaParser::NumberContext *ctx) override {
+  virtual std::any visitOperatorAnd(LuaParser::OperatorAndContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitString(LuaParser::StringContext *ctx) override {
+  virtual std::any visitOperatorComparison(LuaParser::OperatorComparisonContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitOperatorStrcat(LuaParser::OperatorStrcatContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitOperatorAddSub(LuaParser::OperatorAddSubContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitOperatorMulDivMod(LuaParser::OperatorMulDivModContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitOperatorBitwise(LuaParser::OperatorBitwiseContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitOperatorUnary(LuaParser::OperatorUnaryContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitOperatorPower(LuaParser::OperatorPowerContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitUnaryOperator(LuaParser::UnaryOperatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitNumber(LuaParser::NumberContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitString(LuaParser::StringContext *ctx) override {
     return visitChildren(ctx);
   }
 

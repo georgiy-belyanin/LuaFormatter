@@ -37,6 +37,7 @@ std::any FormatVisitor::visitTableconstructor(LuaParser::TableconstructorContext
             int length = cur_writer().firstLineColumn();
             int lines = cur_writer().lines();
             popWriter();
+            auto column_limit = config_.get<int>("column_limit");
             int column_table_limit = 0;
             if (containsKv) {
                 column_table_limit = config_.get<int>("column_table_limit_kv");
@@ -44,11 +45,11 @@ std::any FormatVisitor::visitTableconstructor(LuaParser::TableconstructorContext
             if (!column_table_limit) {
                 column_table_limit = config_.get<int>("column_table_limit");
                 if (!column_table_limit) {
-                    column_table_limit = config_.get<int>("column_limit");
+                    column_table_limit = column_limit;
                 }
             }
-            
-            beyondLimit = cur_columns() + length > column_table_limit || lines > 1;
+
+            beyondLimit = cur_columns() + length > column_limit || length > column_table_limit || lines > 1;
         }
         bool breakAfterLb = false;
         if (beyondLimit) {
@@ -154,11 +155,12 @@ std::any FormatVisitor::visitFieldlist(LuaParser::FieldlistContext* ctx) {
         if (i != n - 1 || config_.get<bool>("extra_sep_at_table_end")) {
             length++;  // calc a ',' if exp >1
         }
+        auto column_limit = config_.get<int>("column_limit");
         auto column_table_limit = config_.get<int>("column_table_limit");
         if (!column_table_limit) {
-            column_table_limit = config_.get<int>("column_limit");
+            column_table_limit = column_limit;
         }
-        beyondLimit = cur_columns() + length > column_table_limit;
+        beyondLimit = cur_columns() + length > column_limit || length > column_table_limit;
         if (beyondLimit) {
             if (config_.get<bool>("align_table_field")) {
                 cur_writer() << commentAfterNewLine(ctx->fieldsep()[i - 1], NONE_INDENT);

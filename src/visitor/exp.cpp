@@ -138,6 +138,7 @@ std::any FormatVisitor::visitExplist(LuaParser::ExplistContext* ctx) {
 }
 
 void FormatVisitor::visitLinkOperator(LuaParser::ExpContext* ctx, antlr4::ParserRuleContext* linkOperator) {
+    auto firstArgsIndent = cur_columns() - indent_ - indentForAlign_;
     visitExp(ctx->exp()[0]);
     bool hasIncIndent = false;
     if (config_.get<bool>("break_after_operator")) {
@@ -151,9 +152,10 @@ void FormatVisitor::visitLinkOperator(LuaParser::ExpContext* ctx, antlr4::Parser
         popWriter();
         beyondLimit = cur_columns() + length > config_.get<int>("column_limit");
         if (beyondLimit) {
-            cur_writer() << commentAfterNewLine(linkOperator, INC_CONTINUATION_INDENT);
+            incIndentForAlign(firstArgsIndent);
+            cur_writer() << commentAfterNewLine(linkOperator, NONE_INDENT);
             cur_writer() << indentWithAlign();
-            hasIncIndent = true;
+            decIndentForAlign(firstArgsIndent);
         } else {
             cur_writer() << commentAfter(linkOperator, " ");
         }
